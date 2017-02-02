@@ -2,35 +2,91 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-
 <mapper namespace="blog.naver.com.member.MemberMapper">
-
 
 	<!-- 회원가입신청 -->
 	<insert id="memberAdd" parameterType="blog.naver.com.dto.Member">
-		INSERT INTO 
-			member 
-				(MEMBERID,
-				MEMBERPW,
-				MEMBERNAME,
-				MEMBERBIRTHDAY,
-				MEMBERPHONE,
-				MEMBERADDR,
-				JOINDAY,
-				LIBCODE,
-				RENTALCOUNT,
-				MEMBERPAYMENTSTATUS) 
-			VALUES
-				(#{MEMBERID},
-				#{MEMBERPW},
-				#{MEMBERNAME},
-				#{MEMBERBIRTHDAY},
-				#{MEMBERPHONE},
-				#{MEMBERADDR},
-				now(),
-				#{LIBCODE},
-				#{RENTALCOUNT},
-				#{MEMBERPAYMENTSTATUS}); 
+		INSERT INTO member (
+			MEMBERID,
+			MEMBERPW,
+			MEMBERNAME,
+			MEMBERBIRTHDAY,
+			MEMBERPHONE,
+			MEMBERADDR,
+			JOINDAY,
+			LIBCODE,
+			MEMBERPAYMENTSTATUS
+		)
+		VALUES (
+			#{MEMBER_ID},
+			#{MEMBER_PW},
+			#{MEMBER_NAME},
+			#{MEMBER_BIRTHDAY},
+			#{MEMBER_PHONE},
+			#{MEMBER_ADDR},
+			#{JOIN_DAY},
+			#{LIB_CODE},
+			#{MEMBER_PAYMENTSTATUS}
+		);
 	</insert>
 
+<select id="memberlist" parameterType="Map" resultType="blog.naver.com.dto.Member">
+	select 
+		MEMBERID
+		MEMBERNAME
+		MEMBERBIRTHDAY
+		MEMBERPHONE
+		MEMBERADDR
+		JOINDAY
+	from member	
+		
+		
+</select>	
+	
+	
+	
+	
+
+	<!-- 책등록 -->
+	<insert id="booksAdd" parameterType="blog.naver.com.dto.Books">
+		insert into books (
+			LIBCODE,
+			BOOKNAME,
+			WRITER,
+			PUBLISHER,
+			CATEGORY,
+			GENRE,
+			BOOKLOCATION,
+			CURRENTSTATUS
+		)
+		values (
+			#{LIB_CODE},
+			#{BOOK_NAME},
+			#{BOOK_WRITER},
+			#{BOOK_PUBLISHER},
+			#{BOOK_CATEGORY},
+			#{BOOK_GENRE},
+			#{BOOK_LOCATION},
+			#{BOOK_CURRENTSTATUS}
+		);
+	</insert>
+
+	<!-- 관리자로그인세션 젤 마지막 -->
+	<select id="adminAdd" resultType="blog.naver.com.dto.Admin">
+		select * from admin 
+			where 
+		ADMINID='id001' and ADMINPW='pw001'; 
+		
+	</select>
+	
+	<!-- 도서관등록 -->
+	<insert id="libAdd" parameterType="blog.naver.com.dto.Lib">
+		insert into lib (
+			LIBNAME,
+			LIBLOCATION
+		) values (
+			#{LIB_NAME},
+			#{LIB_LOCATION}
+		)
+	</insert>
 </mapper>

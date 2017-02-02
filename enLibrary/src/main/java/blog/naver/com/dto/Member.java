@@ -9,7 +9,6 @@ public class Member {
 	private String MEMBER_ADDR;
 	private String JOIN_DAY;
 	private int LIB_CODE;
-	private int RENTAL_COUNT;
 	private String MEMBER_PAYMENTSTATUS;
 	
 	public String getMEMBER_ID() {
@@ -60,24 +59,11 @@ public class Member {
 	public void setLIB_CODE(int lIB_CODE) {
 		LIB_CODE = lIB_CODE;
 	}
-	public int getRENTAL_COUNT() {
-		return RENTAL_COUNT;
-	}
-	public void setRENTAL_COUNT(int rENTAL_COUNT) {
-		RENTAL_COUNT = rENTAL_COUNT;
-	}
 	public String getMEMBER_PAYMENTSTATUS() {
 		return MEMBER_PAYMENTSTATUS;
 	}
 	public void setMEMBER_PAYMENTSTATUS(String mEMBER_PAYMENTSTATUS) {
 		MEMBER_PAYMENTSTATUS = mEMBER_PAYMENTSTATUS;
-	}
-	@Override
-	public String toString() {
-		return "LibraryEnglish [MEMBER_ID=" + MEMBER_ID + ", MEMBER_PW=" + MEMBER_PW + ", MEMBER_NAME=" + MEMBER_NAME
-				+ ", MEMBER_BIRTHDAY=" + MEMBER_BIRTHDAY + ", MEMBER_PHONE=" + MEMBER_PHONE + ", MEMBER_ADDR="
-				+ MEMBER_ADDR + ", JOIN_DAY=" + JOIN_DAY + ", LIB_CODE=" + LIB_CODE + ", RENTAL_COUNT=" + RENTAL_COUNT
-				+ ", MEMBER_PAYMENTSTATUS=" + MEMBER_PAYMENTSTATUS + "]";
 	}
 	
 	

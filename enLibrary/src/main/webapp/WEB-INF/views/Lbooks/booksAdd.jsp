@@ -139,60 +139,52 @@ footer {
 			<div class="container">
 				<br>
 				<br>
-				<h4 align="center">회원가입신청</h4>
+				<h4 align="center">도서등록</h4>
 				<br>
-				<form class="form-inline" action="<c:url value = '/member/memberAdd'/>" method="post">
-					
-					
-					<div class="form-group">
-						<label>아이디 : </label> <input type="text" class="form-control"
-							name="MEMBER_ID" >
-					</div>
-					<br>
+			<form class="form-inline" action="<c:url value = '/Lbooks/booksAdd'/>" method="post">
 					<div>
-						<label>비밀번호 : </label> <input type="password" class="form-control"
-							name="MEMBER_PW" style="width: 20%">
-					</div>
-					<br>
-					<div>
-						<label>이름 : </label> <input type="text" class="form-control"
-							name="MEMBER_NAME" style="width: 20%">
-					</div>
-					<br>
-					<div>
-						<label>생년월일 : </label> <input type="text" class="form-control"
-							name="MEMBER_BIRTHDAY" style="width: 20%">
-					</div>
-					<br>
-					<div>
-						<label>전화번호 : </label> <input type="text" class="form-control"
-							name="MEMBER_PHONE" style="width: 20%">
-					</div>
-					<br>
-					<div>
-						<label>주소 : </label> <input type="text" class="form-control"
-							name="MEMBER_ADDR" style="width: 20%">
-					</div>
-					<br>
-					<div>
-						<label>가입일 : </label> <input type="text" class="form-control"
-							name="JOIN_DAY" style="width: 20%">
-					</div>
-					<br>
-					
-					<div>
-						<label>도서관코드 : </label> <input type="text" class="form-control"
+					<label>도서관코드 : </label> <input type="text" class="form-control"
 							name="LIB_CODE" style="width: 20%">
 					</div>
 					<br>
 					
 					<div>
-						<label>회원비입금여부 : </label> <input type="text" class="form-control"
-							name="MEMBER_PAYMENTSTATUS" style="width: 20%">
+					<label>도서명 : </label> <input type="text" class="form-control"
+							name="BOOK_NAME" style="width: 20%">
 					</div>
 					<br>
 					<div>
-						<button type="submit" class="btn btn-default">가입신청</button>
+						<label>저자 : </label> <input type="text" class="form-control"
+							name="BOOK_WRITER" style="width: 20%">
+					</div>
+					<br>
+					<div>
+						<label>출판사 : </label> <input type="text" class="form-control"
+							name="BOOK_PUBLISHER" style="width: 20%">
+					</div>
+					<br>
+					<div>
+						<label>분류명 : </label> <input type="text" class="form-control"
+							name="BOOK_CATEGORY" style="width: 20%">
+					</div>
+					<br>
+					<div>
+						<label>장르 : </label> <input type="text" class="form-control"
+							name="BOOK_GENRE" style="width: 20%">
+					</div>
+					<br>
+					<div>
+						<label>도서위치 : </label> <input type="text" class="form-control"
+							name="BOOK_LOCATION" style="width: 20%">
+					</div>
+					<br>
+					<div>
+						<label>대여여부 : </label> <input type="text" class="form-control"
+							name="BOOK_CURRENTSTATUS" style="width: 20%">
+					</div>
+					<br>
+					<div>
+						<button type="submit" class="btn btn-default">등록하기</button>
 						<button type="reset" class="btn btn-default">초기화</button>
 					</div>
 				</form>

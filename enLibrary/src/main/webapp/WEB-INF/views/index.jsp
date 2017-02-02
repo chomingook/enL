@@ -67,6 +67,7 @@ footer {
 </style>
 </head>
 <body>
+
 	<!-- !PAGE CONTENT! -->
 	<div class="w3-content" style="max-width: 1500px">
 
@@ -108,7 +109,7 @@ footer {
 							<span class="caret"></span>
 					</a>
 						<ul class="dropdown-menu" role="menu">
-								<li><a href="./books.html">도서등록</a></li>
+							<li><a href="./books.html">도서등록</a></li>
 							<li class="divider"></li>
 							<li><a href="./deletebooks.html">도서폐기</a></li>
 						</ul></li>
@@ -119,13 +120,14 @@ footer {
 							<span class="caret"></span>
 					</a>
 						<ul class="dropdown-menu" role="menu">
-						<li><a href="./bookrental.html">도서대여</a></li>
+							<li><a href="./bookrental.html">도서대여</a></li>
 							<li class="divider"></li>
 								<li><a href="./bookreturn.html">도서반납</a></li>
 						</ul></li>
 				</ul>
+
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#"><span class="glyphicon glyphicon-log-in"></span>
+					<li><a href="./login.html"><span class="glyphicon glyphicon-log-in"></span>
 							로그인</a></li>
 				</ul>
 			</div>
@@ -135,67 +137,41 @@ footer {
 	<div class="container-fluid text-center">
 		<div class="row content">
 			<div class="col-sm-2 sidenav"></div>
-			<div class="col-sm-8 text-left"></div>
+			<div class="col-sm-8 text-left">
+				<img alt="slly" src="/resources/slly.PNG" height="60px">
+			</div>
 			<div class="container">
 				<br>
-				<br>
-				<h4 align="center">회원가입신청</h4>
-				<br>
-				<form class="form-inline" action="<c:url value = '/member/memberAdd'/>" method="post">
-					
-					
-					<div class="form-group">
-						<label>아이디 : </label> <input type="text" class="form-control"
-							name="MEMBER_ID" >
+				<div class="row">
+					<div class="col-md-4">
+						<div class="thumbnail">
+							<img src="/resources/youname.PNG" alt="youname" style="width: 50%">
+							<div class="caption">
+								<p>너의 이름은</p>
+							</div>
+
+						</div>
 					</div>
-					<br>
-					<div>
-						<label>비밀번호 : </label> <input type="password" class="form-control"
-							name="MEMBER_PW" style="width: 20%">
+
+					<div class="col-md-4">
+						<div class="thumbnail">
+							<img src="/resources/gong.PNG" alt="gong" style="width: 50%">
+							<div class="caption">
+								<p>완 공 : 완벽한 공부법</p>
+							</div>
+						</div>
 					</div>
-					<br>
-					<div>
-						<label>이름 : </label> <input type="text" class="form-control"
-							name="MEMBER_NAME" style="width: 20%">
+
+					<div class="col-md-4">
+						<div class="thumbnail">
+							<img src="/resources/min.PNG" alt="min" style="width: 50%">
+							<div class="caption">
+								<p>설민석의 조선왕조실록</p>
+							</div>
+
+						</div>
 					</div>
-					<br>
-					<div>
-						<label>생년월일 : </label> <input type="text" class="form-control"
-							name="MEMBER_BIRTHDAY" style="width: 20%">
-					</div>
-					<br>
-					<div>
-						<label>전화번호 : </label> <input type="text" class="form-control"
-							name="MEMBER_PHONE" style="width: 20%">
-					</div>
-					<br>
-					<div>
-						<label>주소 : </label> <input type="text" class="form-control"
-							name="MEMBER_ADDR" style="width: 20%">
-					</div>
-					<br>
-					<div>
-						<label>가입일 : </label> <input type="text" class="form-control"
-							name="JOIN_DAY" style="width: 20%">
-					</div>
-					<br>
-					
-					<div>
-						<label>도서관코드 : </label> <input type="text" class="form-control"
-							name="LIB_CODE" style="width: 20%">
-					</div>
-					<br>
-					
-					<div>
-						<label>회원비입금여부 : </label> <input type="text" class="form-control"
-							name="MEMBER_PAYMENTSTATUS" style="width: 20%">
-					</div>
-					<br>
-					<div>
-						<button type="submit" class="btn btn-default">가입신청</button>
-						<button type="reset" class="btn btn-default">초기화</button>
-					</div>
-				</form>
+				</div>
 			</div>
 
 
