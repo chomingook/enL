@@ -9,7 +9,8 @@ public class Member {
 	private String MEMBER_ADDR;
 	private String JOIN_DAY;
 	private int LIB_CODE;
-	private String MEMBER_PAYMENTSTATUS;
+	private int RENTAL_COUNT;
+	private char MEMBER_PAYMENTSTATUS;
 	
 	public String getMEMBER_ID() {
 		return MEMBER_ID;
@@ -59,12 +60,19 @@ public class Member {
 	public void setLIB_CODE(int lIB_CODE) {
 		LIB_CODE = lIB_CODE;
 	}
-	public String getMEMBER_PAYMENTSTATUS() {
+	public int getRENTAL_COUNT() {
+		return RENTAL_COUNT;
+	}
+	public void setRENTAL_COUNT(int rENTAL_COUNT) {
+		RENTAL_COUNT = rENTAL_COUNT;
+	}
+	public char getMEMBER_PAYMENTSTATUS() {
 		return MEMBER_PAYMENTSTATUS;
 	}
-	public void setMEMBER_PAYMENTSTATUS(String mEMBER_PAYMENTSTATUS) {
+	public void setMEMBER_PAYMENTSTATUS(char mEMBER_PAYMENTSTATUS) {
 		MEMBER_PAYMENTSTATUS = mEMBER_PAYMENTSTATUS;
 	}
+	
 	
 	
 	

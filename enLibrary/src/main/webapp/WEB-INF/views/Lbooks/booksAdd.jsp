@@ -22,39 +22,32 @@
 body, h1 {
 	font-family: "Montserrat", sans-serif
 }
-
 img {
 	margin-bottom: -7px
 }
-
 .w3-row-padding img {
 	margin-bottom: 12px
 }
-
 .navbar {
 	margin-bottom: 0;
 	border-radius: 0;
 }
-
 /* 아래 높낮이 */
 .row.content {
 	height: 750px
 }
-
 /* 2번색깔 */
 .sidenav {
 	padding-top: 20px;
 	background-color: #f1f1f1;
 	height: 100%;
 }
-
 /* 3번색깔 */
 footer {
 	background-color: #555;
 	color: white;
 	padding: 15px;
 }
-
 @media screen and (max-width: 767px) {
 	.sidenav {
 		height: auto;

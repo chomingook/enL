@@ -145,6 +145,13 @@ footer {
 					
 					
 					<div class="form-group">
+					
+					<div>
+						<label>도서관코드 : </label> <input type="text" class="form-control"
+							name="LIB_CODE" style="width: 20%">
+					</div>
+					<br>
+					
 						<label>아이디 : </label> <input type="text" class="form-control"
 							name="MEMBER_ID" >
 					</div>
@@ -174,23 +181,7 @@ footer {
 							name="MEMBER_ADDR" style="width: 20%">
 					</div>
 					<br>
-					<div>
-						<label>가입일 : </label> <input type="text" class="form-control"
-							name="JOIN_DAY" style="width: 20%">
-					</div>
-					<br>
-					
-					<div>
-						<label>도서관코드 : </label> <input type="text" class="form-control"
-							name="LIB_CODE" style="width: 20%">
-					</div>
-					<br>
-					
-					<div>
-						<label>회원비입금여부 : </label> <input type="text" class="form-control"
-							name="MEMBER_PAYMENTSTATUS" style="width: 20%">
-					</div>
-					<br>
+				
 					<div>
 						<button type="submit" class="btn btn-default">가입신청</button>
 						<button type="reset" class="btn btn-default">초기화</button>

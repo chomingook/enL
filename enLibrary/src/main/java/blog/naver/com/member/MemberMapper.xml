@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="blog.naver.com.member.MemberMapper">
 
-	<!-- 회원가입신청 -->
+	<!-- 회원가입신청insert -->
 	<insert id="memberAdd" parameterType="blog.naver.com.dto.Member">
 		INSERT INTO member (
 			MEMBERID,
@@ -15,6 +15,7 @@
 			MEMBERADDR,
 			JOINDAY,
 			LIBCODE,
+			RENTALCOUNT,
 			MEMBERPAYMENTSTATUS
 		)
 		VALUES (
@@ -24,24 +25,18 @@
 			#{MEMBER_BIRTHDAY},
 			#{MEMBER_PHONE},
 			#{MEMBER_ADDR},
-			#{JOIN_DAY},
+			now(),
 			#{LIB_CODE},
+			#{RENTAL_COUNT},
 			#{MEMBER_PAYMENTSTATUS}
 		);
 	</insert>
 
-<select id="memberlist" parameterType="Map" resultType="blog.naver.com.dto.Member">
-	select 
-		MEMBERID
-		MEMBERNAME
-		MEMBERBIRTHDAY
-		MEMBERPHONE
-		MEMBERADDR
-		JOINDAY
-	from member	
-		
-		
-</select>	
+	
+
+
+
+
 	
 	
 	
@@ -72,10 +67,15 @@
 	</insert>
 
 	<!-- 관리자로그인세션 젤 마지막 -->
-	<select id="adminAdd" resultType="blog.naver.com.dto.Admin">
-		select * from admin 
-			where 
-		ADMINID='id001' and ADMINPW='pw001'; 
+	<select id="adminAdd" parameterType="String" resultType="blog.naver.com.dto.Admin">
+		SELECT
+			ADMINID,
+			ADMINPW,
+			LIBCODE
+		FROM
+			admin
+		WHERE
+			ADMINID=#{ADMIN_ID}
 		
 	</select>
 	
