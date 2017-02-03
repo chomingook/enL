@@ -1,4 +1,7 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 <head>
 <title>Bootstrap Example</title>
@@ -40,7 +43,7 @@ img {
 
 /* 2번색깔 */
 .sidenav {
-	padding-top : 20xp;
+	padding-top: 20px;
 	background-color: #f1f1f1;
 	height: 100%;
 }
@@ -70,7 +73,7 @@ footer {
 		<!-- Header -->
 		<header
 			class="w3-container w3-padding-32 w3-center w3-opacity w3-margin-bottom">
-			<img src="./img/yes24.png" width="200" height=150 alt="yes24"></img>
+			<img src="/resources/yes24.png" width="200" height=150 alt="yes24"></img>
 
 
 		</header>
@@ -105,7 +108,7 @@ footer {
 							<span class="caret"></span>
 					</a>
 						<ul class="dropdown-menu" role="menu">
-							<li><a href="./books.html">도서등록</a></li>
+								<li><a href="./books.html">도서등록</a></li>
 							<li class="divider"></li>
 							<li><a href="./deletebooks.html">도서폐기</a></li>
 						</ul></li>
@@ -121,7 +124,6 @@ footer {
 								<li><a href="./bookreturn.html">도서반납</a></li>
 						</ul></li>
 				</ul>
-
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="#"><span class="glyphicon glyphicon-log-in"></span>
 							로그인</a></li>
@@ -135,10 +137,11 @@ footer {
 			<div class="col-sm-2 sidenav"></div>
 			<div class="col-sm-8 text-left"></div>
 			<div class="container">
-				<br> <br>
+				<br>
+				<br>
 				<h4 align="center">회원관리</h4>
 				<br>
-				<form class="form-inline">
+				<form class="form-inline" action="<c:url value = '/member/management'/>" method="post">
 					<div class="container">
 						<table class="table table-bordered" style="width: 50%" align="center">
 							<thead>
@@ -153,33 +156,17 @@ footer {
 								</tr>
 							</thead>
 							<tbody>
+							<c:forEach var="b" items="${list}">
 								<tr>
-									<td>John</td>
-									<td>Doe</td>
-									<td>john@example.com</td>
-									<td>John</td>
-									<td>John</td>
-									<td>John</td>
+									<td>${b.MEMBER_ID }</td>
+									<td>${b.MEMBER_NAME }</td>
+									<td>${b.MEMBER_BIRTHDAY }</td>
+									<td>${b.MEMBER_PHONE }</td>
+									<td>${b.MEMBER_ADDR }</td>
+									<td>${b.JOIN_DAY }</td>
 									<td><input type = "checkbox" id = "#"></td>
 								</tr>
-								<tr>
-									<td>John2</td>
-									<td>Doe</td>
-									<td>john@example.com</td>
-									<td>John</td>
-									<td>John</td>
-									<td>John</td>
-									<td><input type = "checkbox" id = "#"></td>
-								</tr>
-								<tr>
-									<td>John3</td>
-									<td>Doe</td>
-									<td>john@example.com</td>
-									<td>John</td>
-									<td>John</td>
-									<td>John</td>
-									<td><input type = "checkbox" id = "#"></td>
-								</tr>
+							</c:forEach>
 							</tbody>
 						</table>
 						<button type="submit" class="btn btn-default">승인하기</button>
@@ -187,7 +174,6 @@ footer {
 					</div>
 				</form>
 			</div>
-
 
 			<footer class="container-fluid text-center">
 				<p>영어 도서관 관리시스템</p>

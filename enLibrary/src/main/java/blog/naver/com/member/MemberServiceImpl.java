@@ -1,5 +1,7 @@
 package blog.naver.com.member;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +20,7 @@ public class MemberServiceImpl implements MemberService{
 	/*회원가입등록신청*/
 	@Override
 	public int getMember(Member member) {
-		// TODO Auto-generated method stub
+		
 		return memberDao.insertmember(member);
 	}
 	/*도서등록*/
@@ -33,10 +35,24 @@ public class MemberServiceImpl implements MemberService{
 		// TODO Auto-generated method stub
 		return memberDao.insertadmin(admin);
 	}
+	/*도서관등록*/
 	@Override
 	public int getLib(Lib lib) {
 		// TODO Auto-generated method stub
 		return memberDao.insertlib(lib);
+	}
+	
+	/*회원가입목록(승인x)*/		
+	@Override
+	public List<Member> getList() {
+		
+		return memberDao.selectList();
+	}
+	
+	@Override
+	public Member getBm(String MEMBER_ID) {
+		// TODO Auto-generated method stub
+		return memberDao.selectBm(MEMBER_ID);
 	}
 
 }

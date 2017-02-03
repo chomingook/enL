@@ -1,5 +1,7 @@
 package blog.naver.com.member;
 
+import java.util.List;
+
 import blog.naver.com.dto.Admin;
 import blog.naver.com.dto.Books;
 import blog.naver.com.dto.Lib;
@@ -19,6 +21,11 @@ public interface MemberDao {
 	/*도서관등록*/
 	int insertlib(Lib lib);
 	
-	int selectmember();
+	/*회원가입목록(승인x)*/	
+	List<Member> selectList();
+	
+	/*대여에서 회원정보 가져오기*/
+	Member selectBm(String MEMBER_ID);
+	
 	
 }

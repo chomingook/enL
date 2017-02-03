@@ -1,5 +1,7 @@
 package blog.naver.com.member;
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -42,11 +44,21 @@ public class MemberImpl implements MemberDao {
 		// TODO Auto-generated method stub
 		return sqlSessionTemplate.insert(Member_NS + "libAdd", lib);
 	}
-
+	/*회원가입목록(승인x)*/	
 	@Override
-	public int selectmember() {
+	public List<Member> selectList() {
 		// TODO Auto-generated method stub
-		return sqlSessionTemplate.selectOne(Member_NS + "selectmember");
+		return sqlSessionTemplate.selectList(Member_NS + "selectment");
 	}
+
+	/*대여에서 회원정보 가져오기*/
+	@Override
+	public Member selectBm(String MEMBER_ID) {
+		// TODO Auto-generated method stub
+		return sqlSessionTemplate.selectOne(Member_NS + "rentalmember", MEMBER_ID);
+	}
+
+
+	
 
 }
