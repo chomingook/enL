@@ -9,11 +9,10 @@ public class Books {
 	private String BOOK_CATEGORY;
 	private String BOOK_GENRE;
 	private String BOOK_LOCATION;
-	private String BOOK_CURRENTSTATUS;
+	private char BOOK_CURRENTSTATUS;
 	private String BOOK_FIRSTRENTALDAY;
 	private int BOOK_RENTALCOUNT;
 	private int BOOK_RENTALDAYS;
-	
 	public int getBOOK_CODE() {
 		return BOOK_CODE;
 	}
@@ -62,10 +61,10 @@ public class Books {
 	public void setBOOK_LOCATION(String bOOK_LOCATION) {
 		BOOK_LOCATION = bOOK_LOCATION;
 	}
-	public String getBOOK_CURRENTSTATUS() {
+	public char getBOOK_CURRENTSTATUS() {
 		return BOOK_CURRENTSTATUS;
 	}
-	public void setBOOK_CURRENTSTATUS(String bOOK_CURRENTSTATUS) {
+	public void setBOOK_CURRENTSTATUS(char bOOK_CURRENTSTATUS) {
 		BOOK_CURRENTSTATUS = bOOK_CURRENTSTATUS;
 	}
 	public String getBOOK_FIRSTRENTALDAY() {
@@ -86,6 +85,8 @@ public class Books {
 	public void setBOOK_RENTALDAYS(int bOOK_RENTALDAYS) {
 		BOOK_RENTALDAYS = bOOK_RENTALDAYS;
 	}
+	
+	
 
 	
 }

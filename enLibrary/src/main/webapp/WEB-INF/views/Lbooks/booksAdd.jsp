@@ -171,9 +171,10 @@ footer {
 							name="BOOK_LOCATION" style="width: 20%">
 					</div>
 					<br>
+					
 					<div>
-						<label>대여여부 : </label> <input type="text" class="form-control"
-							name="BOOK_CURRENTSTATUS" style="width: 20%">
+						<label>최초대여일(수정중) : </label> <input type="date" class="form-control"
+							name="BOOK_FIRSTRENTALDAY" style="width: 20%">
 					</div>
 					<br>
 					<div>

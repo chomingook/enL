@@ -164,7 +164,7 @@ footer {
 									<td>${b.MEMBER_PHONE }</td>
 									<td>${b.MEMBER_ADDR }</td>
 									<td>${b.JOIN_DAY }</td>
-									<td><input type = "checkbox" id = "#"></td>
+									<td><input type = "checkbox" name = "MEMBER_ID" value="${b.MEMBER_ID }"></td>
 								</tr>
 							</c:forEach>
 							</tbody>

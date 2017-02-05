@@ -9,20 +9,23 @@ import blog.naver.com.dto.Member;
 
 public interface MemberService {
 
-	/*회원등록신청*/
+	/*�쉶�썝�벑濡앹떊泥�*/
 	int getMember(Member member);
 	
-	/*도서등록*/
+	/*�룄�꽌�벑濡�*/
 	int getBooks(Books books);
 	
-	/*관리자등록*/
+	/*愿�由ъ옄�벑濡�*/
 	int getAdmin(Admin admin);
 	
-	/*도서관등록*/
+	/*�룄�꽌愿��벑濡�*/
 	int getLib(Lib lib);
 	
-	/*회원가입목록(승인x)*/	
+	/*�쉶�썝媛��엯紐⑸줉(�듅�씤x)*/	
 	List<Member> getList();
 	
 	Member getBm(String MEMBER_ID);
+	
+	int updatement(String[] MEMBER_ID);
+	
 }

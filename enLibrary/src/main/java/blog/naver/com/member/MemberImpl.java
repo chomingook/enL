@@ -17,45 +17,51 @@ public class MemberImpl implements MemberDao {
 	private SqlSessionTemplate sqlSessionTemplate;
 	public final String Member_NS = "blog.naver.com.member.MemberMapper.";
 	
-	/*회원가입등록신청*/
+	/*�쉶�썝媛��엯�벑濡앹떊泥�*/
 	@Override
 	public int insertmember(Member member) {
 		// TODO Auto-generated method stub
 		return sqlSessionTemplate.insert(Member_NS + "memberAdd", member);
 	}
 
-	/*도서등록*/
+	/*�룄�꽌�벑濡�*/
 	@Override
 	public int insertbooks(Books books) {
 		// TODO Auto-generated method stub
 		return sqlSessionTemplate.insert(Member_NS + "booksAdd", books);
 	}
 
-	/*관리자등록*/
+	/*愿�由ъ옄�벑濡�*/
 	@Override
 	public int insertadmin(Admin admin) {
 		// TODO Auto-generated method stub
 		return sqlSessionTemplate.insert(Member_NS + "adminAdd", admin);
 	}
 	
-	/*도서관등록*/
+	/*�룄�꽌愿��벑濡�*/
 	@Override
 	public int insertlib(Lib lib) {
 		// TODO Auto-generated method stub
 		return sqlSessionTemplate.insert(Member_NS + "libAdd", lib);
 	}
-	/*회원가입목록(승인x)*/	
+	/*�쉶�썝媛��엯紐⑸줉(�듅�씤x)*/	
 	@Override
 	public List<Member> selectList() {
 		// TODO Auto-generated method stub
 		return sqlSessionTemplate.selectList(Member_NS + "selectment");
 	}
 
-	/*대여에서 회원정보 가져오기*/
+	/*���뿬�뿉�꽌 �쉶�썝�젙蹂� 媛��졇�삤湲�*/
 	@Override
 	public Member selectBm(String MEMBER_ID) {
 		// TODO Auto-generated method stub
 		return sqlSessionTemplate.selectOne(Member_NS + "rentalmember", MEMBER_ID);
+	}
+
+	@Override
+	public int updatement(String MEMBER_ID) {
+		// TODO Auto-generated method stub
+		return sqlSessionTemplate.update(Member_NS + "updatement", MEMBER_ID);
 	}
 
 

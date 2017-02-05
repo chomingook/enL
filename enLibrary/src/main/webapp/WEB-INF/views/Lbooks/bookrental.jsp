@@ -194,21 +194,21 @@ footer {
 			
  	 <script>
  	$(document).ready(function(){
-            $('#BKrentalbtn').click(function() {
-                $.ajax({
-                    url:'/Lbooks/bookrental', 			//값을 가져갈 위치
-                    dataType:'json',					//형식
-                    type:'POST',						//타입
-                    data:{"MEMBER_ID":$('#MEMBER_ID').val()},		//데이터 넣는거
-                    success:function(data){
-                    	var MEMBER_NAME=data.MEMBER_NAME;
-        				var MEMBER_PHONE=data.MEMBER_PHONE;
-        				$('#MEMBER_NAME').val(MEMBER_NAME);
-        				$('#MEMBER_PHONE').val(MEMBER_PHONE);
-                    }
-                        }
-                    })
-                });
+ 		$("#BKrentalbtn").click(function(){
+ 			$.ajax({
+ 				 url:'/Lbooks/bookrental', 			//값을 가져갈 위치
+                 dataType:'json',					//형식
+                 type:'POST',						//타입
+                 data:{"MEMBER_ID":$('#MEMBER_ID').val()},	
+ 				
+                 success:function(data){
+                	 $('#MEMBER_NAME').val(data.MEMBER_NAME);
+     				$('#MEMBER_PHONE').val(data.MEMBER_PHONE);
+                 }
+ 				})
+ 				});	
+ 				});
+          
              </script>
 
 			<footer class="container-fluid text-center">

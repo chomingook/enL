@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="blog.naver.com.member.MemberMapper">
 	<!-- 대여할때 조회로 아이디에 이름 주소 가져오기 -->
-	<select id="rentalmember" resultType="blog.naver.com.dto.Member">
+	<select id="rentalmember" parameterType="String" resultType="blog.naver.com.dto.Member">
 		select 
 			MEMBERNAME AS MEMBER_NAME,
 			MEMBERPHONE AS MEMBER_PHONE,
@@ -26,40 +26,52 @@
 	<!-- 회원가입목록(승인x)	 -->
 	<select id="selectment" resultType="blog.naver.com.dto.Member">
 		select
-		MEMBERID AS MEMBER_ID,
-		MEMBERNAME AS MEMBER_NAME,
-		MEMBERBIRTHDAY AS MEMBER_BIRTHDAY,
-		MEMBERPHONE AS MEMBER_PHONE,
-		MEMBERADDR AS MEMBER_ADDR,
-		JOINDAY AS JOIN_DAY
-		from member
+			MEMBERID AS MEMBER_ID,
+			MEMBERNAME AS MEMBER_NAME,
+			MEMBERBIRTHDAY AS MEMBER_BIRTHDAY,
+			MEMBERPHONE AS MEMBER_PHONE,
+			MEMBERADDR AS MEMBER_ADDR,
+			JOINDAY AS JOIN_DAY
+		from 
+			member
+		where
+			MEMBERPAYMENTSTATUS='N';
 	</select>
+	
+	<update id="updatement" parameterType="String">
+		UPDATE
+			member
+		SET
+			MEMBERPAYMENTSTATUS='Y'
+		WHERE
+			MEMBERID=#{MEMBER_ID}
+	</update>
 	
 	<!-- 회원가입신청insert -->
 	<insert id="memberAdd" parameterType="blog.naver.com.dto.Member">
 		INSERT INTO member (
-		MEMBERID,
-		MEMBERPW,
-		MEMBERNAME,
-		MEMBERBIRTHDAY,
-		MEMBERPHONE,
-		MEMBERADDR,
-		JOINDAY,
-		LIBCODE,
-		RENTALCOUNT,
-		MEMBERPAYMENTSTATUS
+			MEMBERID,
+			MEMBERPW,
+			MEMBERNAME,
+			MEMBERBIRTHDAY,
+			MEMBERPHONE,
+			MEMBERADDR,
+			JOINDAY,
+			LIBCODE,
+			RENTALCOUNT,
+			MEMBERPAYMENTSTATUS
 		)
 		VALUES (
-		#{MEMBER_ID},
-		#{MEMBER_PW},
-		#{MEMBER_NAME},
-		#{MEMBER_BIRTHDAY},
-		#{MEMBER_PHONE},
-		#{MEMBER_ADDR},
-		now(),
-		#{LIB_CODE},
-		#{RENTAL_COUNT},
-		#{MEMBER_PAYMENTSTATUS}
+			#{MEMBER_ID},
+			#{MEMBER_PW},
+			#{MEMBER_NAME},
+			#{MEMBER_BIRTHDAY},
+			#{MEMBER_PHONE},
+			#{MEMBER_ADDR},
+			now(),
+			#{LIB_CODE},
+			#{RENTAL_COUNT},
+			#{MEMBER_PAYMENTSTATUS}
 		);
 	</insert>
 
@@ -67,24 +79,30 @@
 	<!-- 책등록 -->
 	<insert id="booksAdd" parameterType="blog.naver.com.dto.Books">
 		insert into books (
-		LIBCODE,
-		BOOKNAME,
-		WRITER,
-		PUBLISHER,
-		CATEGORY,
-		GENRE,
-		BOOKLOCATION,
-		CURRENTSTATUS
+			LIBCODE,
+			BOOKNAME,
+			WRITER,
+			PUBLISHER,
+			CATEGORY,
+			GENRE,
+			BOOKLOCATION,
+			CURRENTSTATUS,
+			FIRSTRENTALDAY,
+			RENTALCOUNT,
+			RENTALDAYS
 		)
 		values (
-		#{LIB_CODE},
-		#{BOOK_NAME},
-		#{BOOK_WRITER},
-		#{BOOK_PUBLISHER},
-		#{BOOK_CATEGORY},
-		#{BOOK_GENRE},
-		#{BOOK_LOCATION},
-		#{BOOK_CURRENTSTATUS}
+			#{LIB_CODE},
+			#{BOOK_NAME},
+			#{BOOK_WRITER},
+			#{BOOK_PUBLISHER},
+			#{BOOK_CATEGORY},
+			#{BOOK_GENRE},
+			#{BOOK_LOCATION},
+			#{BOOK_CURRENTSTATUS},
+			#{BOOK_FIRSTRENTALDAY},
+			#{BOOK_RENTALCOUNT},
+			#{BOOK_RENTALDAYS}
 		);
 	</insert>
 
@@ -104,11 +122,11 @@
 	<!-- 도서관등록 -->
 	<insert id="libAdd" parameterType="blog.naver.com.dto.Lib">
 		insert into lib (
-		LIBNAME,
-		LIBLOCATION
+			LIBNAME,
+			LIBLOCATION
 		) values (
-		#{LIB_NAME},
-		#{LIB_LOCATION}
+			#{LIB_NAME},
+			#{LIB_LOCATION}
 		)
 	</insert>
 </mapper>
