@@ -5,13 +5,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.sun.xml.internal.bind.v2.runtime.unmarshaller.Receiver;
 
 import blog.naver.com.dto.Admin;
 import blog.naver.com.dto.Books;
 import blog.naver.com.dto.Lib;
 import blog.naver.com.dto.Member;
-import blog.naver.com.dto.Rental;
 
 @Service
 public class MemberServiceImpl implements MemberService{
@@ -61,8 +59,6 @@ public class MemberServiceImpl implements MemberService{
 	@Override
 	public Member getBm(String MEMBER_ID) {
 		
-		
-		
 		return memberDao.selectBm(MEMBER_ID);
 	}
 	@Override
@@ -72,6 +68,12 @@ public class MemberServiceImpl implements MemberService{
 			result=memberDao.updatement(MEMBER_ID[i]);
 		}
 		return result;
+	}
+	
+	@Override
+	public Books selectBB(int BOOK_CODE) {
+		// TODO Auto-generated method stub
+		return memberDao.selectBB(BOOK_CODE);
 	}
 }
 

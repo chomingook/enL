@@ -134,35 +134,35 @@ footer {
 				<br>
 			<h4 align="center">도서대여</h4>
 				<br>
-			<form class="form-inline" >
+			<form class="form-inline" action="" method="post">
 					
 					<div>
 						<label>아아디 : </label> <input type="text" class="form-control"
-							id="MEMBER_ID" name = "MEMBER_ID"style="width: 20%"> <button type = "submit" id = "BKrentalbtn" class="btn btn-default" >아이디 조회</button>
+							id="MEMBER_ID" name = "MEMBER_ID"style="width: 20%"> <input type = "button" id = "BKrentalbtn" class="btn btn-default" value="아이디 조회"/>
 					</div>
 					<br>
 					
 					<div>
 						<label>이름 : </label> <input type="text" class="form-control"
-							id="MEMBER_NAME" name="MEMBER_NAME"style="width: 20%" >
+							id="MEMBER_NAME" style="width: 20%" >
 					</div>
 					<br>
 					
 					<div>
 						<label>전화번호 : </label> <input type="text" class="form-control"
-							id="MEMBER_PHONE" name="MEMBER_PHONE"style="width: 20%" >
+							id="MEMBER_PHONE" style="width: 20%" >
 					</div>
 					<br>
 					<div>
 						<label>주소 : </label> <input type="text" class="form-control"
-							id="MEMBER_ADDR" name="MEMBER_ADDR"style="width: 20%">
+							id="MEMBER_ADDR" style="width: 20%">
 					</div>
 					<br>
 					
 					
 					<div>
 						<label>도서관리코드 : </label> <input type="text" class="form-control"
-							id="BOOK_CODE" style="width: 20%"> <button type = "submit" id="#" class="btn btn-default" >도서 조회</button>
+							id="BOOK_CODE" name = "BOOK_CODE" style="width: 20%"> <input type = "button" id="BBrentalbtn" class="btn btn-default" value="도서 조회"/>
 					</div>
 					
 					<br>
@@ -195,6 +195,7 @@ footer {
  	 <script>
  	$(document).ready(function(){
  		$("#BKrentalbtn").click(function(){
+ 			console.log("멤버번튼 클릭");
  			$.ajax({
  				 url:'/Lbooks/bookrental', 			//값을 가져갈 위치
                  dataType:'json',					//형식
@@ -202,11 +203,29 @@ footer {
                  data:{"MEMBER_ID":$('#MEMBER_ID').val()},	
  				
                  success:function(data){
-                	 $('#MEMBER_NAME').val(data.MEMBER_NAME);
-     				$('#MEMBER_PHONE').val(data.MEMBER_PHONE);
+					console.log(data);
+					$('#MEMBER_NAME').val(data.member_NAME);
+					$('#MEMBER_PHONE').val(data.member_PHONE);
+					$('#MEMBER_ADDR').val(data.member_ADDR);
+					
                  }
  				})
  				});	
+ 		
+ 		$("#BBrentalbtn").click(function(){
+ 			console.log("멤버번튼 클릭book");
+ 			$.ajax({
+ 				 url:'/Lbooks/bookrental', 			//값을 가져갈 위치
+                 dataType:'json',					//형식
+                 type:'POST',						//타입
+                 data:{"BOOK_CODE":$('#BOOK_CODE').val()},	
+                 success:function(data){
+					console.log(data);
+					$('#BOOK_NAME').val(data.BOOK_NAME);
+                 }
+				})
+				});
+ 		
  				});
           
              </script>

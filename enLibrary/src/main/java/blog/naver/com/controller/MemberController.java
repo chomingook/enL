@@ -1,6 +1,8 @@
 package blog.naver.com.controller;
 
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,21 +19,28 @@ import blog.naver.com.member.MemberService;
 
 @Controller
 public class MemberController {
-
+	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
 	@Autowired
 	private MemberService memberService;
 	
 	
-	/*���뿬 : member �븘�씠�뵒瑜� �넻�빐 二쇱냼媛� �씠由� �쟾�솕踰덊샇 媛��졇�삤湲� ajax*/
+	//대여 회원 정보
 	@RequestMapping(value="/Lbooks/bookrental", method=RequestMethod.POST)
 		public @ResponseBody Member rentalmember(@RequestParam(value="MEMBER_ID") String MEMBER_ID){
+		System.out.println("memberId : "+MEMBER_ID);
 		Member returnMb = memberService.getBm(MEMBER_ID);
+		logger.info(returnMb.toString());
 		return returnMb;
 	}
 	
-	@RequestMapping(value="/Lbooks/bookrental", method=RequestMethod.GET)
-		public String rentalmember(){
-			return "/Lbooks/bookrental";
+	
+	
+	@RequestMapping(value="/Lbooks/bookrental", method=RequestMethod.POST)
+		public @ResponseBody Books rentalbooks(@RequestParam(value="BOOK_CODE")int BOOK_CODE){
+		
+		Books returnBB = memberService.selectBB(BOOK_CODE);
+		
+			return returnBB;
 	}
 	
 	/*�쉶�썝媛��엯紐⑸줉(�듅�씤x)*/	

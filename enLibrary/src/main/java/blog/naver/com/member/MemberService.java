@@ -28,4 +28,5 @@ public interface MemberService {
 	
 	int updatement(String[] MEMBER_ID);
 	
+	Books selectBB(int BOOK_CODE);
 }

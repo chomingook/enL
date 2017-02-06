@@ -12,6 +12,13 @@ public class Member {
 	private int RENTAL_COUNT;
 	private char MEMBER_PAYMENTSTATUS;
 	
+	@Override
+	public String toString() {
+		return "Member [MEMBER_ID=" + MEMBER_ID + ", MEMBER_PW=" + MEMBER_PW + ", MEMBER_NAME=" + MEMBER_NAME
+				+ ", MEMBER_BIRTHDAY=" + MEMBER_BIRTHDAY + ", MEMBER_PHONE=" + MEMBER_PHONE + ", MEMBER_ADDR="
+				+ MEMBER_ADDR + ", JOIN_DAY=" + JOIN_DAY + ", LIB_CODE=" + LIB_CODE + ", RENTAL_COUNT=" + RENTAL_COUNT
+				+ ", MEMBER_PAYMENTSTATUS=" + MEMBER_PAYMENTSTATUS + "]";
+	}
 	public String getMEMBER_ID() {
 		return MEMBER_ID;
 	}

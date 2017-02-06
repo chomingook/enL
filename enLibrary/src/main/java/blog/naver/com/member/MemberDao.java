@@ -9,7 +9,7 @@ import blog.naver.com.dto.Member;
 
 public interface MemberDao {
 
-	/*�쉶�썝媛��엯�벑濡앹떊泥�*/
+	//회원가입신청insert
 	int insertmember(Member member);
 	
 	/*�룄�꽌�벑濡�*/
@@ -29,5 +29,5 @@ public interface MemberDao {
 	/*���뿬�뿉�꽌 �쉶�썝�젙蹂� 媛��졇�삤湲�*/
 	Member selectBm(String MEMBER_ID);
 	
-	
+	Books selectBB(int BOOK_CODE);
 }

@@ -64,6 +64,12 @@ public class MemberImpl implements MemberDao {
 		return sqlSessionTemplate.update(Member_NS + "updatement", MEMBER_ID);
 	}
 
+	@Override
+	public Books selectBB(int BOOK_CODE) {
+		// TODO Auto-generated method stub
+		return sqlSessionTemplate.selectOne(Member_NS + "rentalbooks", BOOK_CODE);
+	}
+
 
 	
 
