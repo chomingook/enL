@@ -10,6 +10,7 @@ import blog.naver.com.dto.Admin;
 import blog.naver.com.dto.Books;
 import blog.naver.com.dto.Lib;
 import blog.naver.com.dto.Member;
+import blog.naver.com.dto.Rental;
 
 @Repository
 public class MemberImpl implements MemberDao {
@@ -17,58 +18,78 @@ public class MemberImpl implements MemberDao {
 	private SqlSessionTemplate sqlSessionTemplate;
 	public final String Member_NS = "blog.naver.com.member.MemberMapper.";
 	
-	/*�쉶�썝媛��엯�벑濡앹떊泥�*/
+	//회원가입신청insert
 	@Override
 	public int insertmember(Member member) {
 		// TODO Auto-generated method stub
 		return sqlSessionTemplate.insert(Member_NS + "memberAdd", member);
 	}
 
-	/*�룄�꽌�벑濡�*/
+	//책등록
 	@Override
 	public int insertbooks(Books books) {
 		// TODO Auto-generated method stub
 		return sqlSessionTemplate.insert(Member_NS + "booksAdd", books);
 	}
 
-	/*愿�由ъ옄�벑濡�*/
+	//관리자로그인세션 젤 마지막 
 	@Override
 	public int insertadmin(Admin admin) {
 		// TODO Auto-generated method stub
 		return sqlSessionTemplate.insert(Member_NS + "adminAdd", admin);
 	}
 	
-	/*�룄�꽌愿��벑濡�*/
+	//도서관등록
 	@Override
 	public int insertlib(Lib lib) {
 		// TODO Auto-generated method stub
 		return sqlSessionTemplate.insert(Member_NS + "libAdd", lib);
 	}
-	/*�쉶�썝媛��엯紐⑸줉(�듅�씤x)*/	
+	//회원 리스트 가져오기
 	@Override
 	public List<Member> selectList() {
 		// TODO Auto-generated method stub
 		return sqlSessionTemplate.selectList(Member_NS + "selectment");
 	}
 
-	/*���뿬�뿉�꽌 �쉶�썝�젙蹂� 媛��졇�삤湲�*/
+	//대여할때 조회로 아이디에 이름 주소 가져오기
 	@Override
 	public Member selectBm(String MEMBER_ID) {
 		// TODO Auto-generated method stub
 		return sqlSessionTemplate.selectOne(Member_NS + "rentalmember", MEMBER_ID);
 	}
-
+	//회원승인(Y)
 	@Override
 	public int updatement(String MEMBER_ID) {
 		// TODO Auto-generated method stub
 		return sqlSessionTemplate.update(Member_NS + "updatement", MEMBER_ID);
 	}
-
+	//대여할때 조회로 코드 입력후 이름 가져오기
 	@Override
 	public Books selectBB(int BOOK_CODE) {
 		// TODO Auto-generated method stub
 		return sqlSessionTemplate.selectOne(Member_NS + "rentalbooks", BOOK_CODE);
 	}
+	//도서폐기등록 
+	@Override
+	public int deleteinsert(Books books) {
+		// TODO Auto-generated method stub
+		return sqlSessionTemplate.insert(Member_NS + "deleteinsert", books);
+	}
+	//도서폐기후 도서대여상태를 N 사용불가로 만들기
+	@Override
+	public int bookdeleteupdate(int BOOK_CODE) {
+		// TODO Auto-generated method stub
+		return sqlSessionTemplate.update(Member_NS + "bookdeleteupdate", BOOK_CODE);
+	}
+	//대여정보 등록
+	@Override
+	public int rentalInsert(Rental rental) {
+		// TODO Auto-generated method stub
+		return sqlSessionTemplate.insert(Member_NS + "rentalInsert", rental);
+	}
+
+	
 
 
 	

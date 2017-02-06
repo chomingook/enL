@@ -3,6 +3,56 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="blog.naver.com.member.MemberMapper">
+
+<insert id="bookrentalInsert" parameterType="blog.naver.com.dto.Rental">
+	insert into
+			rental(
+				BOOKCODE,
+				MEMBERID,
+				RENTALSTARTDAY,
+				RETURNEXPECTDAY,
+				RETURNDAY,
+				RETURNSTATUS
+			)values(
+				#{bookCode},
+				#{memberId},
+				#{rentalStartDay},
+				#{returnExpectDay},
+				#{returnDay},
+				#{returnStatus}
+				)
+		</insert>
+
+
+<!-- 도서폐기등록 -->
+<insert id="deleteinsert" parameterType="blog.naver.com.dto.Books">
+	insert into 
+		discardbooks(
+			BOOKCODE,
+			DISCARDREASON
+		
+		
+		) values (
+			#{BOOK_CODE},
+			
+			#{DISCARDREASON}
+		)
+</insert>
+
+<!-- 도서폐기후 도서대여상태를 N 사용불가로 만들기 -->
+<update id="bookdeleteupdate" parameterType="int">
+	update
+		books
+	set
+		CURRENTSTATUS='N'
+	where
+		BOOKCODE=#{BOOK_CODE}
+
+
+</update>
+
+
+
 	<!-- 대여할때 조회로 아이디에 이름 주소 가져오기 -->
 	<select id="rentalmember" parameterType="String" resultType="blog.naver.com.dto.Member">
 		select 
@@ -14,13 +64,11 @@
 	</select>
 	
 	<!-- 대여할때 조회로 코드 입력후 이름 가져오기 -->
-	<select id="rentalbooks" parameterType="blog.naver.com.dto.Books">
+	<select id="rentalbooks" parameterType="int" resultType="blog.naver.com.dto.Books">
 		select
-			BOOK_NAME
-		from Books
+			BOOKNAME AS BOOK_NAME
+		from books
 		where BOOKCODE = #{BOOK_CODE}
-
-
 	</select>
 
 	<!-- 회원가입목록(승인x)	 -->
@@ -37,7 +85,7 @@
 		where
 			MEMBERPAYMENTSTATUS='N';
 	</select>
-	
+	<!-- 회원승인 -->
 	<update id="updatement" parameterType="String">
 		UPDATE
 			member

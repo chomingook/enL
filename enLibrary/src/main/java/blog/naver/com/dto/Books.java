@@ -13,6 +13,29 @@ public class Books {
 	private String BOOK_FIRSTRENTALDAY;
 	private int BOOK_RENTALCOUNT;
 	private int BOOK_RENTALDAYS;
+	private String DISCARDREASON;
+	
+	@Override
+	public String toString() {
+		return "Books [BOOK_CODE=" + BOOK_CODE + ", LIB_CODE=" + LIB_CODE + ", BOOK_NAME=" + BOOK_NAME
+				+ ", BOOK_WRITER=" + BOOK_WRITER + ", BOOK_PUBLISHER=" + BOOK_PUBLISHER + ", BOOK_CATEGORY="
+				+ BOOK_CATEGORY + ", BOOK_GENRE=" + BOOK_GENRE + ", BOOK_LOCATION=" + BOOK_LOCATION
+				+ ", BOOK_CURRENTSTATUS=" + BOOK_CURRENTSTATUS + ", BOOK_FIRSTRENTALDAY=" + BOOK_FIRSTRENTALDAY
+				+ ", BOOK_RENTALCOUNT=" + BOOK_RENTALCOUNT + ", BOOK_RENTALDAYS=" + BOOK_RENTALDAYS + ", DISCARDREASON="
+				+ DISCARDREASON + "]";
+	}
+	
+	
+	public String getDISCARDREASON() {
+		return DISCARDREASON;
+	}
+
+
+	public void setDISCARDREASON(String dISCARDREASON) {
+		DISCARDREASON = dISCARDREASON;
+	}
+
+
 	public int getBOOK_CODE() {
 		return BOOK_CODE;
 	}

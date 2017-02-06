@@ -10,6 +10,7 @@ import blog.naver.com.dto.Admin;
 import blog.naver.com.dto.Books;
 import blog.naver.com.dto.Lib;
 import blog.naver.com.dto.Member;
+import blog.naver.com.dto.Rental;
 
 @Service
 public class MemberServiceImpl implements MemberService{
@@ -18,7 +19,7 @@ public class MemberServiceImpl implements MemberService{
 	private MemberDao memberDao;
 	
 	
-	/*�쉶�썝媛��엯�벑濡앹떊泥�*/
+	//회원가입신청insert
 	
 	@Override
 	public int getMember(Member member) {
@@ -27,7 +28,7 @@ public class MemberServiceImpl implements MemberService{
 		
 		return memberDao.insertmember(member);
 	}
-	/*�룄�꽌�벑濡�*/
+	//책등록
 	@Override
 	public int getBooks(Books books) {
 		books.setBOOK_CURRENTSTATUS('Y');
@@ -36,31 +37,32 @@ public class MemberServiceImpl implements MemberService{
 		
 		return memberDao.insertbooks(books);
 	}
-	/*愿�由ъ옄�벑濡�*/
+	//관리자로그인세션 젤 마지막 
 	@Override
 	public int getAdmin(Admin admin) {
 		// TODO Auto-generated method stub
 		return memberDao.insertadmin(admin);
 	}
-	/*�룄�꽌愿��벑濡�*/
+	//도서관등록
 	@Override
 	public int getLib(Lib lib) {
 		// TODO Auto-generated method stub
 		return memberDao.insertlib(lib);
 	}
 	
-	/*�쉶�썝媛��엯紐⑸줉(�듅�씤x)*/		
+	//회원 리스트 가져오기
 	@Override
 	public List<Member> getList() {
 		
 		return memberDao.selectList();
 	}
-	
+	//대여할때 조회로 아이디에 이름 주소 가져오기
 	@Override
 	public Member getBm(String MEMBER_ID) {
 		
 		return memberDao.selectBm(MEMBER_ID);
 	}
+	//회원승인
 	@Override
 	public int updatement(String[] MEMBER_ID) {
 		int result=0;
@@ -69,11 +71,36 @@ public class MemberServiceImpl implements MemberService{
 		}
 		return result;
 	}
-	
+	//대여할때 조회로 코드 입력후 이름 가져오기
 	@Override
-	public Books selectBB(int BOOK_CODE) {
+	public Books getselectBB(int BOOK_CODE) {
 		// TODO Auto-generated method stub
 		return memberDao.selectBB(BOOK_CODE);
+	}
+	//도서폐기등록 
+	@Override
+	public int deleteinsert(Books books) {
+		// TODO Auto-generated method stub
+		return memberDao.deleteinsert(books);
+	}
+	//도서폐기후 도서대여상태를 N 사용불가로 만들기
+	@Override
+	public int bookdeleteupdate(int BOOK_CODE) {
+		// TODO Auto-generated method stub
+		return memberDao.bookdeleteupdate(BOOK_CODE);
+	}
+	@Override
+	public int rentalInsert(Rental rental) {
+		Rental rentals = new Rental();
+		rentals.setBookCode(rentals.getBookCode());
+		rentals.setMemberId(rental.getMemberId());
+		rentals.setRentalStartDay(rental.getRentalStartDay());
+		rentals.setReturnExpectDay(rental.getReturnExpectDay());
+		rentals.setReturnStatus("N");
+		
+		
+		
+		return memberDao.rentalInsert(rentals);
 	}
 }
 

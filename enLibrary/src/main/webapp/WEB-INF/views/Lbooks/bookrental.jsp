@@ -174,17 +174,22 @@ footer {
 					
 					
 					<div>
-						<label>대여일 : </label> <input type="text" class="form-control"
+						<label>대여일 : </label> <input type="date" class="form-control"
 							id="#" style="width: 20%">
 					</div>
 					<br>
 					
 					<div>
-						<label>반납일 : </label> <input type="text" class="form-control"
+						<label>반납일 : </label> <input type="date" class="form-control"
 							id="#" style="width: 20%">
 					</div>
 					<br>
 					
+					<div>
+						<label>결제금액 : </label> <input type="#" class="form-control"
+							id="#" style="width: 20%">
+					</div>
+					<br>
 					<div>
 						<input type="submit" class="btn btn" value="대여하기">
 						<input type="reset" class="btn btn" value="초기화">
@@ -197,7 +202,7 @@ footer {
  		$("#BKrentalbtn").click(function(){
  			console.log("멤버번튼 클릭");
  			$.ajax({
- 				 url:'/Lbooks/bookrental', 			//값을 가져갈 위치
+ 				 url:'/Lbooks/bookmember', 			//값을 가져갈 위치
                  dataType:'json',					//형식
                  type:'POST',						//타입
                  data:{"MEMBER_ID":$('#MEMBER_ID').val()},	
@@ -211,17 +216,19 @@ footer {
                  }
  				})
  				});	
- 		
+ 	});
+ 	
+ 	$(document).ready(function(){
  		$("#BBrentalbtn").click(function(){
  			console.log("멤버번튼 클릭book");
  			$.ajax({
- 				 url:'/Lbooks/bookrental', 			//값을 가져갈 위치
+ 				 url:'/Lbooks/selectrental', 			//값을 가져갈 위치
                  dataType:'json',					//형식
                  type:'POST',						//타입
                  data:{"BOOK_CODE":$('#BOOK_CODE').val()},	
                  success:function(data){
 					console.log(data);
-					$('#BOOK_NAME').val(data.BOOK_NAME);
+					$('#BOOK_NAME').val(data.book_NAME);
                  }
 				})
 				});
