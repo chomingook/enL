@@ -4,6 +4,9 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="blog.naver.com.member.MemberMapper">
 
+
+
+<!-- 도서대여등록 -->
 <insert id="bookrentalInsert" parameterType="blog.naver.com.dto.Rental">
 	insert into
 			rental(
@@ -17,26 +20,31 @@
 				#{bookCode},
 				#{memberId},
 				#{rentalStartDay},
-				#{returnExpectDay},
+				now(),
 				#{returnDay},
 				#{returnStatus}
 				)
 		</insert>
+		
+<!-- 도서반납시 반납 완료후 Y값으로 변환 -->
+<update id="returnupdate" parameterType="int">
+	update rental 
+		set 
+	RETURNSTATUS='Y' 
+		where 
+		RENTALCODE=#{retalCode}
 
-
+</update>
 <!-- 도서폐기등록 -->
-<insert id="deleteinsert" parameterType="blog.naver.com.dto.Books">
+<insert id="bookdeleteinsert" parameterType="blog.naver.com.dto.Books">
 	insert into 
 		discardbooks(
 			BOOKCODE,
 			DISCARDREASON
-		
-		
 		) values (
 			#{BOOK_CODE},
-			
-			#{DISCARDREASON}
-		)
+			#{DISCARDREA_SON}
+		);
 </insert>
 
 <!-- 도서폐기후 도서대여상태를 N 사용불가로 만들기 -->
@@ -47,12 +55,21 @@
 		CURRENTSTATUS='N'
 	where
 		BOOKCODE=#{BOOK_CODE}
-
-
 </update>
 
+ <!-- 대여 날짜 가져오기 -->
+	<select id="returnRental" parameterType="int" resultType="blog.naver.com.dto.Rental">
+		select 
+			RENTALSTARTDAY AS rentalStartDay,
+			RETURNDAY AS returnDay
+		from 
+			rental
+		where
+			RENTALCODE=#{retalCode}		
 
 
+
+	</select>
 	<!-- 대여할때 조회로 아이디에 이름 주소 가져오기 -->
 	<select id="rentalmember" parameterType="String" resultType="blog.naver.com.dto.Member">
 		select 

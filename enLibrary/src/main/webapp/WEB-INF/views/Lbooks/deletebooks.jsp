@@ -134,7 +134,7 @@ footer {
 				<br>
 				<h4 align="center">도서폐기</h4>
 				<br>
-				<form class="form-inline" action="/Lbooks/bookrental" method="post">
+				<form class="form-inline" action="/Lbooks/deletebooks" method="post">
 
 					<div>
 					<label>도서관리코드 : </label> <input type="text" class="form-control"
@@ -150,7 +150,7 @@ footer {
 					
 					<div>
 						<label>폐기사유 : </label>
-						<textarea rows="10" cols="50" class="form-control" id = "DISCARDREASON" name="DISCARDREASON"></textarea>
+						<textarea rows="10" cols="50" class="form-control" name="DISCARDREA_SON"></textarea>
 					</div>
 					<br>
 					<div>

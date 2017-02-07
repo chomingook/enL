@@ -72,9 +72,9 @@ public class MemberImpl implements MemberDao {
 	}
 	//도서폐기등록 
 	@Override
-	public int deleteinsert(Books books) {
+	public int bookdeleteinsert(Books books) {
 		// TODO Auto-generated method stub
-		return sqlSessionTemplate.insert(Member_NS + "deleteinsert", books);
+		return sqlSessionTemplate.insert(Member_NS + "bookdeleteinsert", books);
 	}
 	//도서폐기후 도서대여상태를 N 사용불가로 만들기
 	@Override
@@ -84,9 +84,21 @@ public class MemberImpl implements MemberDao {
 	}
 	//대여정보 등록
 	@Override
-	public int rentalInsert(Rental rental) {
+	public int bookrentalInsert(Rental rental) {
 		// TODO Auto-generated method stub
-		return sqlSessionTemplate.insert(Member_NS + "rentalInsert", rental);
+		return sqlSessionTemplate.insert(Member_NS + "bookrentalInsert", rental);
+	}
+	//도서반납시 반납 완료후 Y값으로 변환
+	@Override
+	public int returnupdate(int retalCode) {
+		// TODO Auto-generated method stub
+		return sqlSessionTemplate.update(Member_NS + "returnupdate", retalCode);
+	}
+	//대여 날짜 가져오기
+	@Override
+	public Rental returnRental(int retalCode) {
+		// TODO Auto-generated method stub
+		return sqlSessionTemplate.selectOne(Member_NS + "returnRental", retalCode);
 	}
 
 	

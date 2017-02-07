@@ -134,11 +134,11 @@ footer {
 				<br>
 			<h4 align="center">도서대여</h4>
 				<br>
-			<form class="form-inline" action="" method="post">
+			<form class="form-inline" action="/Lbooks/bookrental" method="post">
 					
 					<div>
 						<label>아아디 : </label> <input type="text" class="form-control"
-							id="MEMBER_ID" name = "MEMBER_ID"style="width: 20%"> <input type = "button" id = "BKrentalbtn" class="btn btn-default" value="아이디 조회"/>
+							id="MEMBER_ID" name = "memberId"style="width: 20%"> <input type = "button" id = "BKrentalbtn" class="btn btn-default" value="아이디 조회"/>
 					</div>
 					<br>
 					
@@ -162,7 +162,7 @@ footer {
 					
 					<div>
 						<label>도서관리코드 : </label> <input type="text" class="form-control"
-							id="BOOK_CODE" name = "BOOK_CODE" style="width: 20%"> <input type = "button" id="BBrentalbtn" class="btn btn-default" value="도서 조회"/>
+							id="BOOK_CODE" name = "bookCode" style="width: 20%"> <input type = "button" id="BBrentalbtn" class="btn btn-default" value="도서 조회"/>
 					</div>
 					
 					<br>
@@ -175,21 +175,16 @@ footer {
 					
 					<div>
 						<label>대여일 : </label> <input type="date" class="form-control"
-							id="#" style="width: 20%">
+							name="rentalStartDay" style="width: 20%">
 					</div>
 					<br>
 					
 					<div>
 						<label>반납일 : </label> <input type="date" class="form-control"
-							id="#" style="width: 20%">
+							name="returnDay" style="width: 20%">
 					</div>
 					<br>
 					
-					<div>
-						<label>결제금액 : </label> <input type="#" class="form-control"
-							id="#" style="width: 20%">
-					</div>
-					<br>
 					<div>
 						<input type="submit" class="btn btn" value="대여하기">
 						<input type="reset" class="btn btn" value="초기화">

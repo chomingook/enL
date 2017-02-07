@@ -8,7 +8,7 @@ public class Rental {
 	private String rentalStartDay;
 	private String returnExpectDay;
 	private String returnDay;
-	private String returnStatus;
+	private char returnStatus;
 	public int getRetalCode() {
 		return retalCode;
 	}
@@ -45,11 +45,17 @@ public class Rental {
 	public void setReturnDay(String returnDay) {
 		this.returnDay = returnDay;
 	}
-	public String getReturnStatus() {
+	public char getReturnStatus() {
 		return returnStatus;
 	}
-	public void setReturnStatus(String returnStatus) {
-		this.returnStatus = returnStatus;
+	public void setReturnStatus(char c) {
+		this.returnStatus = c;
+	}
+	@Override
+	public String toString() {
+		return "Rental [retalCode=" + retalCode + ", bookCode=" + bookCode + ", memberId=" + memberId
+				+ ", rentalStartDay=" + rentalStartDay + ", returnExpectDay=" + returnExpectDay + ", returnDay="
+				+ returnDay + ", returnStatus=" + returnStatus + "]";
 	}
 	
 	

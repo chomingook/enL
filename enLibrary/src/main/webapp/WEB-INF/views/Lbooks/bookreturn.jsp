@@ -135,7 +135,6 @@ footer {
 				<h4 align="center">도서반납</h4>
 				<br>
 			<form class="form-inline" action="" method="post">
-					
 					<div>
 						<label>아아디 : </label> <input type="text" class="form-control"
 							id="MEMBER_ID" name = "MEMBER_ID"style="width: 20%"> <input type = "button" id = "BKrentalbtn" class="btn btn-default" value="아이디 조회"/>
@@ -164,39 +163,92 @@ footer {
 						<label>도서관리코드 : </label> <input type="text" class="form-control"
 							id="BOOK_CODE" name = "BOOK_CODE" style="width: 20%"> <input type = "button" id="BBrentalbtn" class="btn btn-default" value="도서 조회"/>
 					</div>
-					
+					<br>
 					<br>
 					<div>
 						<label>도서명 : </label> <input type="text" class="form-control"
 							id="BOOK_NAME" style="width: 20%"> 
 					</div>
 					<br>
-					
+					<div>
+						<label>대여/반납코드 : </label> <input type="text" class="form-control"
+							id="retalCode" name = "retalCode" style="width: 20%"> <input type = "button" id="RBrentalbtn" class="btn btn-default" value="반납 조회"/>
+					</div>
 					
 					<div>
 						<label>대여일 : </label> <input type="text" class="form-control"
-							id="#" style="width: 20%">
+							id="rentalStartDay" style="width: 20%">
 					</div>
 					<br>
 					
 					<div>
 						<label>반납일 : </label> <input type="text" class="form-control"
-							id="#" style="width: 20%">
+							id="returnDay" style="width: 20%">
 					</div>
 					<br>
 					
-					<div>
-						<label>결제금액 : </label> <input type="text" class="form-control"
-							id="#" style="width: 20%">
-					</div>
-					<br>
 					<div>
 						<button type="submit" class="btn btn-default">반납하기</button>
 						<button type="reset" class="btn btn-default">초기화</button>
 					</div>
 				</form>
 			</div>
-
+ <script>
+ 	$(document).ready(function(){
+ 		$("#BKrentalbtn").click(function(){
+ 			console.log("멤버번튼 클릭member");
+ 			$.ajax({
+ 				 url:'/Lbooks/bookmember', 			//값을 가져갈 위치
+                 dataType:'json',					//형식
+                 type:'POST',						//타입
+                 data:{"MEMBER_ID":$('#MEMBER_ID').val()},	
+ 				
+                 success:function(data){
+					console.log(data);
+					$('#MEMBER_NAME').val(data.member_NAME);
+					$('#MEMBER_PHONE').val(data.member_PHONE);
+					$('#MEMBER_ADDR').val(data.member_ADDR);
+					
+                 }
+ 				})
+ 				});	
+ 	});
+ 	
+ 	$(document).ready(function(){
+ 		$("#BBrentalbtn").click(function(){
+ 			console.log("멤버번튼 클릭book");
+ 			$.ajax({
+ 				 url:'/Lbooks/selectrental', 			//값을 가져갈 위치
+                 dataType:'json',					//형식
+                 type:'POST',						//타입
+                 data:{"BOOK_CODE":$('#BOOK_CODE').val()},	
+                 success:function(data){
+					console.log(data);
+					$('#BOOK_NAME').val(data.book_NAME);
+                 }
+				})
+				});
+ 		
+ 				});
+          
+ 	$(document).ready(function(){
+ 		$("#RBrentalbtn").click(function(){
+ 			console.log("멤버번튼 클릭rental");
+ 			$.ajax({
+ 				 url:'/returnbook', 			//값을 가져갈 위치
+                 dataType:'json',					//형식
+                 type:'POST',						//타입
+                 data:{"retalCode":$('#retalCode').val()},	
+                 success:function(data){
+					console.log(data);
+					$('#rentalStartDay').val(data.rentalStartDay);
+					$('#returnDay').val(data.returnDay);
+                 }
+				})
+				});
+ 		
+ 				});
+             </script>
 
 			<footer class="container-fluid text-center">
 				<p>영어 도서관 관리시스템</p>

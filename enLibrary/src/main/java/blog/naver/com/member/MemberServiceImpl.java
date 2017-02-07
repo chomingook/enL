@@ -79,9 +79,9 @@ public class MemberServiceImpl implements MemberService{
 	}
 	//도서폐기등록 
 	@Override
-	public int deleteinsert(Books books) {
+	public int bookdeleteinsert(Books books) {
 		// TODO Auto-generated method stub
-		return memberDao.deleteinsert(books);
+		return memberDao.bookdeleteinsert(books);
 	}
 	//도서폐기후 도서대여상태를 N 사용불가로 만들기
 	@Override
@@ -89,19 +89,26 @@ public class MemberServiceImpl implements MemberService{
 		// TODO Auto-generated method stub
 		return memberDao.bookdeleteupdate(BOOK_CODE);
 	}
+	
+	//도서 대여 등록
 	@Override
-	public int rentalInsert(Rental rental) {
-		Rental rentals = new Rental();
-		rentals.setBookCode(rentals.getBookCode());
-		rentals.setMemberId(rental.getMemberId());
-		rentals.setRentalStartDay(rental.getRentalStartDay());
-		rentals.setReturnExpectDay(rental.getReturnExpectDay());
-		rentals.setReturnStatus("N");
-		
-		
-		
-		return memberDao.rentalInsert(rentals);
+	public int bookrentalInsert(Rental rental) {
+		rental.setReturnStatus('N');
+		return memberDao.bookrentalInsert(rental);
 	}
+	//도서반납시 반납 완료후 Y값으로 변환
+	@Override
+	public int returnupdate(int retalCode) {
+		// TODO Auto-generated method stub
+		return memberDao.returnupdate(retalCode);
+	}
+	//대여 날짜 가져오기
+	@Override
+	public Rental returnRental(int retalCode) {
+		// TODO Auto-generated method stub
+		return memberDao.returnRental(retalCode);
+	}
+	
 }
 
 
