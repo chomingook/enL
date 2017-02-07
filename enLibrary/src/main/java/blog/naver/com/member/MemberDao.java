@@ -6,6 +6,7 @@ import blog.naver.com.dto.Admin;
 import blog.naver.com.dto.Books;
 import blog.naver.com.dto.Lib;
 import blog.naver.com.dto.Member;
+import blog.naver.com.dto.Payment;
 import blog.naver.com.dto.Rental;
 
 public interface MemberDao {
@@ -17,7 +18,7 @@ public interface MemberDao {
 	int insertbooks(Books books);
 
 	// 관리자로그인세션 젤 마지막
-	int insertadmin(Admin admin);
+	Admin adminAdd(String ADMIN_ID);
 
 	// 도서관등록
 	int insertlib(Lib lib);
@@ -48,5 +49,8 @@ public interface MemberDao {
 
 	// 대여 날짜 가져오기
 	Rental returnRental(int retalCode);
+	
+	// 결제등록
+	int paymentInsert(Payment payment);
 
 }

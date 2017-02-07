@@ -1,4 +1,7 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 <head>
 <title>Bootstrap Example</title>
@@ -40,7 +43,7 @@ img {
 
 /* 2번색깔 */
 .sidenav {
-	padding-top : 20xp;
+	padding-top: 20px;
 	background-color: #f1f1f1;
 	height: 100%;
 }
@@ -64,13 +67,14 @@ footer {
 </style>
 </head>
 <body>
+
 	<!-- !PAGE CONTENT! -->
 	<div class="w3-content" style="max-width: 1500px">
 
 		<!-- Header -->
 		<header
 			class="w3-container w3-padding-32 w3-center w3-opacity w3-margin-bottom">
-			<img src="./img/yes24.png" width="200" height=150 alt="yes24"></img>
+			<img src="/resources/yes24.png" width="200" height=150 alt="yes24"></img>
 
 
 		</header>
@@ -83,7 +87,7 @@ footer {
 					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="./index.html">Home</a>
+				<a class="navbar-brand" href="indexlogin">Home</a>
 			</div>
 			<div class="navbar-collapse collapse" id="navbar-collapse-1">
 				<ul class="nav navbar-nav">
@@ -92,11 +96,11 @@ footer {
 							<span class="caret"></span>
 					</a>
 						<ul class="dropdown-menu" role="menu">
-							<li><a href="./branch.html">지점등록</a></li>
+							<li><a href="/member/libAdd">지점등록</a></li>
 							<li class="divider"></li>
-							<li><a href="./member.html">회원가입신청</a></li>
+							<li><a href="/member/memberAdd">회원가입신청</a></li>
 							<li class="divider"></li>
-							<li><a href="./management.html">회원관리</a></li>
+							<li><a href="/member/management">회원관리</a></li>
 						</ul></li>
 				</ul>
 				<ul class="nav navbar-nav">
@@ -105,9 +109,9 @@ footer {
 							<span class="caret"></span>
 					</a>
 						<ul class="dropdown-menu" role="menu">
-							<li><a href="./books.html">도서등록</a></li>
+							<li><a href="/Lbooks/booksAdd">도서등록</a></li>
 							<li class="divider"></li>
-							<li><a href="./deletebooks.html">도서폐기</a></li>
+							<li><a href="/Lbooks/deletebooks">도서폐기</a></li>
 						</ul></li>
 				</ul>
 				<ul class="nav navbar-nav">
@@ -116,15 +120,15 @@ footer {
 							<span class="caret"></span>
 					</a>
 						<ul class="dropdown-menu" role="menu">
-							<li><a href="./bookrental.html">도서대여</a></li>
+							<li><a href="/Lbooks/bookrental">도서대여</a></li>
 							<li class="divider"></li>
-							<li><a href="./bookreturn.html">도서반납</a></li>
+								<li><a href="/Lbooks/bookreturn">도서반납</a></li>
 						</ul></li>
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#"><span class="glyphicon glyphicon-log-in"></span>
-							로그인</a></li>
+					<li><a href="/logout">
+					<span class="glyphicon glyphicon-log-in"></span>${ADMIN_ID}로그아웃</a></li>
 				</ul>
 			</div>
 		</div>
@@ -133,64 +137,42 @@ footer {
 	<div class="container-fluid text-center">
 		<div class="row content">
 			<div class="col-sm-2 sidenav"></div>
-			<div class="col-sm-8 text-left"></div>
+			<div class="col-sm-8 text-left">
+				<img alt="slly" src="/resources/slly.PNG" height="60px">
+			</div>
+			<br><br><br><br><br><br>
 			<div class="container">
-				<br> <br>
-				<h4 align="center">도서반납</h4>
 				<br>
-			<form class="form-inline">
-					
-					<div>
-						<label>도서코드 : </label> <input type="text" class="form-control"
-							id="#" style="width: 20%">
+				<div class="row">
+					<div class="col-md-4">
+						<div class="thumbnail">
+							<img src="/resources/youname.PNG" alt="youname" style="width: 50%">
+							<div class="caption">
+								<p>너의 이름은</p>
+							</div>
+
+						</div>
 					</div>
-					<br>
-					<div>
-						<label>도서명 : </label> <input type="text" class="form-control"
-							id="#" style="width: 20%">
+
+					<div class="col-md-4">
+						<div class="thumbnail">
+							<img src="/resources/gong.PNG" alt="gong" style="width: 50%">
+							<div class="caption">
+								<p>완 공 : 완벽한 공부법</p>
+							</div>
+						</div>
 					</div>
-					<br>
-					<div>
-						<label>저자이름 : </label> <input type="text" class="form-control"
-							id="#" style="width: 20%">
+
+					<div class="col-md-4">
+						<div class="thumbnail">
+							<img src="/resources/min.PNG" alt="min" style="width: 50%">
+							<div class="caption">
+								<p>설민석의 조선왕조실록</p>
+							</div>
+
+						</div>
 					</div>
-					<br>
-					<div>
-						<label>출판사 : </label> <input type="text" class="form-control"
-							id="#" style="width: 20%">
-					</div>
-					<br>
-					<div>
-						<label>분류명 : </label> <input type="text" class="form-control"
-							id="#" style="width: 20%">
-					</div>
-					<br>
-					<div>
-						<label>위치 : </label> <input type="text" class="form-control"
-							id="#" style="width: 20%">
-					</div>
-					<br>
-					
-					<div>
-						<label>대여시작일 : </label> <input type="text" class="form-control"
-							id="#" style="width: 20%">
-					</div>
-					<br>
-					<div>
-						<label>대여일수 : </label> <input type="text" class="form-control"
-							id="#" style="width: 20%">
-					</div>
-					<br>
-					<div>
-						<label>결제금액 : </label> <input type="text" class="form-control"
-							id="#" style="width: 20%">
-					</div>
-					<br>
-					<div>
-						<button type="submit" class="btn btn-default">반납하기</button>
-						<button type="reset" class="btn btn-default">초기화</button>
-					</div>
-				</form>
+				</div>
 			</div>
 
 

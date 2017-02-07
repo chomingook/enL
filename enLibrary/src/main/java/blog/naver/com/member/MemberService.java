@@ -2,14 +2,19 @@ package blog.naver.com.member;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+
 import blog.naver.com.dto.Admin;
 import blog.naver.com.dto.Books;
 import blog.naver.com.dto.Lib;
 import blog.naver.com.dto.Member;
+import blog.naver.com.dto.Payment;
 import blog.naver.com.dto.Rental;
 
 public interface MemberService {
-
+	static final Logger logger = LoggerFactory.getLogger(MemberService.class);
 	// 회원가입신청insert
 	int getMember(Member member);
 
@@ -17,7 +22,7 @@ public interface MemberService {
 	int getBooks(Books books);
 
 	// 관리자로그인세션 젤 마지막
-	int getAdmin(Admin admin);
+	Admin adminAdd(Admin admin);
 
 	// 도서관등록
 	int getLib(Lib lib);
@@ -48,5 +53,8 @@ public interface MemberService {
 
 	// 대여 날짜 가져오기
 	Rental returnRental(int retalCode);
+	
+	//결제등록
+	int paymentInsert(Payment payment);
 
 }

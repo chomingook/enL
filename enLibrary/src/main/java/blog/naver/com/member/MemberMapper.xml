@@ -4,6 +4,20 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="blog.naver.com.member.MemberMapper">
 
+<insert id="paymentInsert" parameterType="blog.naver.com.dto.Payment">
+	insert into
+		payment(
+			RENTALCODE,
+			MEMBERID,
+			PAYMENTPRICE,
+			PAYMENTDAY
+		)values(
+			#{rentalcode},
+			#{memberid},
+			#{paymentprice},
+			now()
+		)
+</insert>
 
 
 <!-- 도서대여등록 -->
@@ -75,7 +89,8 @@
 		select 
 			MEMBERNAME AS MEMBER_NAME,
 			MEMBERPHONE AS MEMBER_PHONE,
-			MEMBERADDR AS MEMBER_ADDR
+			MEMBERADDR AS MEMBER_ADDR,
+			MEMBERPAYMENTSTATUS AS MEMBER_PAYMENTSTATUS
 		from member
 		where MEMBERID = #{MEMBER_ID}
 	</select>
@@ -174,13 +189,13 @@
 	<!-- 관리자로그인세션 젤 마지막 -->
 	<select id="adminAdd" parameterType="String" resultType="blog.naver.com.dto.Admin">
 		SELECT
-		ADMINID,
-		ADMINPW,
-		LIBCODE
+			ADMINID,
+			ADMINPW,
+			LIBCODE
 		FROM
-		admin
+			admin
 		WHERE
-		ADMINID=#{ADMIN_ID}
+			ADMINID=#{ADMIN_ID}
 
 	</select>
 

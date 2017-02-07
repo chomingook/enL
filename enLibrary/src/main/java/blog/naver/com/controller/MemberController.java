@@ -1,5 +1,7 @@
 package blog.naver.com.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,15 +16,34 @@ import blog.naver.com.dto.Admin;
 import blog.naver.com.dto.Books;
 import blog.naver.com.dto.Lib;
 import blog.naver.com.dto.Member;
+import blog.naver.com.dto.Payment;
 import blog.naver.com.dto.Rental;
 import blog.naver.com.member.MemberService;
 
 @Controller
 public class MemberController {
 	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
+
 	@Autowired
 	private MemberService memberService;
 
+	//결제 폼
+	@RequestMapping(value="/admins/payment", method=RequestMethod.GET)
+		public String paymentInsert(){
+			return "/admins/payment";
+			
+		}
+
+	//결제 등록 action
+	@RequestMapping(value="/admins/payments", method=RequestMethod.POST)
+	public String paymentInsert(Payment payment){
+		memberService.paymentInsert(payment);
+		return "/admins/payment";
+	}
+	
+	
+	
+	
 	// 대여 폼
 	@RequestMapping(value = "/Lbooks/bookrental", method = RequestMethod.GET)
 	public String rentalmember() {
@@ -35,7 +56,7 @@ public class MemberController {
 	public String rentalmember(Rental rental) {
 		memberService.bookrentalInsert(rental);
 		logger.info("rental :" + rental.toString());
-		return "/Lbooks/bookrental";
+		return "redirect:/admins/payment";
 
 	}
 
@@ -160,9 +181,33 @@ public class MemberController {
 
 	// 관리자로그인세션 젤 마지막
 	@RequestMapping(value = "/admins/adminAdd", method = RequestMethod.POST)
-	public String adminAdd(Admin admin) {
-		memberService.getAdmin(admin);
+	public String adminAdd(Admin admin, HttpSession session) {
+		logger.info(admin.toString());
+		String result = "";
+		Admin resultAdmin = memberService.adminAdd(admin);
+		logger.info(resultAdmin.toString());
+		if (resultAdmin.getResult() == 1) {
+			session.setAttribute("ADMIN_ID", resultAdmin.getADMIN_ID());
+			session.setAttribute("ADMIN_PW", resultAdmin.getADMIN_PW());
+			session.setAttribute("LIB_CODE", resultAdmin.getLIB_CODE());
+			result = "indexlogin";
+		} else {
+			result = "redirect:/admins/adminAdd";
+		}
+		return result;
+	}
+
+	// 로그아웃
+	@RequestMapping(value = "/logout")
+	public String logoutAction(HttpSession session) {
+		session.invalidate();
 		return "index";
+	}
+
+	// 로그인후 index
+	@RequestMapping(value = "/indexlogin")
+	public String indexlogin() {
+		return "indexlogin";
 	}
 
 	// 도서관등록 폼

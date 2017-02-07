@@ -4,8 +4,9 @@ public class Payment {
 	private int paymentcode;
 	private int rentalcode;
 	private String memberid;
-	private String paymentday;
 	private int paymentprice;
+	private String paymentday;
+	
 	public int getPaymentcode() {
 		return paymentcode;
 	}

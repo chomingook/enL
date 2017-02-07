@@ -10,6 +10,7 @@ import blog.naver.com.dto.Admin;
 import blog.naver.com.dto.Books;
 import blog.naver.com.dto.Lib;
 import blog.naver.com.dto.Member;
+import blog.naver.com.dto.Payment;
 import blog.naver.com.dto.Rental;
 
 @Repository
@@ -34,9 +35,9 @@ public class MemberImpl implements MemberDao {
 
 	//관리자로그인세션 젤 마지막 
 	@Override
-	public int insertadmin(Admin admin) {
+	public Admin adminAdd(String ADMIN_ID) {
 		// TODO Auto-generated method stub
-		return sqlSessionTemplate.insert(Member_NS + "adminAdd", admin);
+		return sqlSessionTemplate.selectOne(Member_NS + "adminAdd", ADMIN_ID);
 	}
 	
 	//도서관등록
@@ -99,6 +100,12 @@ public class MemberImpl implements MemberDao {
 	public Rental returnRental(int retalCode) {
 		// TODO Auto-generated method stub
 		return sqlSessionTemplate.selectOne(Member_NS + "returnRental", retalCode);
+	}
+	// 결제등록
+	@Override
+	public int paymentInsert(Payment payment) {
+		// TODO Auto-generated method stub
+		return sqlSessionTemplate.insert(Member_NS + "paymentInsert", payment);
 	}
 
 	

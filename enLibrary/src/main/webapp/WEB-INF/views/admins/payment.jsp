@@ -86,7 +86,7 @@ footer {
 					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="./index.html">Home</a>
+				<a class="navbar-brand" href="indexlogin">Home</a>
 			</div>
 			<div class="navbar-collapse collapse" id="navbar-collapse-1">
 				<ul class="nav navbar-nav">
@@ -95,11 +95,11 @@ footer {
 							<span class="caret"></span>
 					</a>
 						<ul class="dropdown-menu" role="menu">
-							<li><a href="./branch.html">지점등록</a></li>
+							<li><a href="/member/libAdd">지점등록</a></li>
 							<li class="divider"></li>
-							<li><a href="./member.html">회원가입신청</a></li>
+							<li><a href="/member/memberAdd">회원가입신청</a></li>
 							<li class="divider"></li>
-							<li><a href="./management.html">회원관리</a></li>
+							<li><a href="/member/management">회원관리</a></li>
 						</ul></li>
 				</ul>
 				<ul class="nav navbar-nav">
@@ -108,9 +108,9 @@ footer {
 							<span class="caret"></span>
 					</a>
 						<ul class="dropdown-menu" role="menu">
-								<li><a href="./books.html">도서등록</a></li>
+							<li><a href="/Lbooks/booksAdd">도서등록</a></li>
 							<li class="divider"></li>
-							<li><a href="./deletebooks.html">도서폐기</a></li>
+							<li><a href="/Lbooks/deletebooks">도서폐기</a></li>
 						</ul></li>
 				</ul>
 				<ul class="nav navbar-nav">
@@ -119,14 +119,15 @@ footer {
 							<span class="caret"></span>
 					</a>
 						<ul class="dropdown-menu" role="menu">
-						<li><a href="./bookrental.html">도서대여</a></li>
+							<li><a href="/Lbooks/bookrental">도서대여</a></li>
 							<li class="divider"></li>
-								<li><a href="./bookreturn.html">도서반납</a></li>
+								<li><a href="/Lbooks/bookreturn">도서반납</a></li>
 						</ul></li>
 				</ul>
+
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#"><span class="glyphicon glyphicon-log-in"></span>
-							로그인</a></li>
+					<li><a href="/logout">
+					<span class="glyphicon glyphicon-log-in"></span>${ADMIN_ID}로그아웃</a></li>
 				</ul>
 			</div>
 		</div>
@@ -139,26 +140,61 @@ footer {
 			<div class="container">
 				<br>
 				<br>
-			<h4 align="center">관리자로그인</h4>
+			<h4 align="center">결제</h4>
 				<br>
-			<form class="form-inline" action="<c:url value = '/admins/adminAdd'/>" method="post">
+			<form class="form-inline" action="/admins/payment" method="post">
 					<!-- 렌탈 코드값을 가져와서 결제금액(회원과 일반) 결제 확인 -->
 					<div>
-					<label>관리자ID : </label> <input type="text" class="form-control"
-							name="ADMIN_ID" style="width: 20%">
+					<label>랜탈코드 : </label> <input type="text" class="form-control"
+							name="#" style="width: 20%">
 					</div>
 					<br>
 					<div>
-						<label>비밀번호 : </label> <input type="password" class="form-control"
-							name="ADMIN_PW" style="width: 20%">
+						<label>아아디 : </label> <input type="text" class="form-control"
+							id="MEMBER_ID" name = "memberid" style="width: 20%"> <input type = "button" id = "BPbtn" class="btn btn-default" value="아이디 조회"/>
 					</div>
 					<br>
 					<div>
-						<button type="submit" class="btn btn-default">로그인</button>
+						<label>회원승인여부 : </label> <input type="text" class="form-control"
+							id="MEMBER_PAYMENTSTATUS" style="width: 20%">
+					</div>
+					<br>
+					<div>
+						<label>결제금액 : </label> <input type="text" class="form-control"
+							name="paymentprice" style="width: 20%">
+					</div>
+					<br>
+					
+					<div>
+						<label>결제일 : </label> <input type="date" class="form-control"
+							name="paymentday" style="width: 20%">
+					</div>
+					<br>
+					<div>
+						<button type="submit" class="btn btn-default">결제하기</button>
 						<button type="reset" class="btn btn-default">초기화</button>
 					</div>
 				</form>
 			</div>
+ <script>
+ 	$(document).ready(function(){
+ 		$("#BPbtn").click(function(){
+ 			console.log("멤버번튼 클릭");
+ 			$.ajax({
+ 				 url:'/Lbooks/bookmember', 			//값을 가져갈 위치
+                 dataType:'json',					//형식
+                 type:'POST',						//타입
+                 data:{"MEMBER_ID":$('#MEMBER_ID').val()},	
+ 				
+                 success:function(data){
+					console.log(data);
+					$('#MEMBER_PAYMENTSTATUS').val(data.member_PAYMENTSTATUS);
+					
+                 }
+ 				})
+ 				});	
+ 	});
+</script>
 
 
 			<footer class="container-fluid text-center">

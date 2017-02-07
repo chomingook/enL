@@ -4,7 +4,22 @@ public class Admin {
 
 	private String ADMIN_ID;
 	private String ADMIN_PW;
+	private int LIB_CODE;
+	private int result;
 	
+	
+	public int getResult() {
+		return result;
+	}
+	public void setResult(int result) {
+		this.result = result;
+	}
+	public int getLIB_CODE() {
+		return LIB_CODE;
+	}
+	public void setLIB_CODE(int lIB_CODE) {
+		LIB_CODE = lIB_CODE;
+	}
 	public String getADMIN_ID() {
 		return ADMIN_ID;
 	}
@@ -18,10 +33,6 @@ public class Admin {
 		ADMIN_PW = aDMIN_PW;
 	}
 	
-	@Override
-	public String toString() {
-		return "Admin [ADMIN_ID=" + ADMIN_ID + ", ADMIN_PW=" + ADMIN_PW + "]";
-	}
 	
 	
 }

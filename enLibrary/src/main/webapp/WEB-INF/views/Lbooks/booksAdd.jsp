@@ -79,7 +79,7 @@ footer {
 					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="./index.html">Home</a>
+				<a class="navbar-brand" href="/indexlogin">Home</a>
 			</div>
 			<div class="navbar-collapse collapse" id="navbar-collapse-1">
 				<ul class="nav navbar-nav">
@@ -88,11 +88,11 @@ footer {
 							<span class="caret"></span>
 					</a>
 						<ul class="dropdown-menu" role="menu">
-							<li><a href="./branch.html">지점등록</a></li>
+							<li><a href="/member/libAdd">지점등록</a></li>
 							<li class="divider"></li>
-							<li><a href="./member.html">회원가입신청</a></li>
+							<li><a href="/member/memberAdd">회원가입신청</a></li>
 							<li class="divider"></li>
-							<li><a href="./management.html">회원관리</a></li>
+							<li><a href="/member/management">회원관리</a></li>
 						</ul></li>
 				</ul>
 				<ul class="nav navbar-nav">
@@ -101,9 +101,9 @@ footer {
 							<span class="caret"></span>
 					</a>
 						<ul class="dropdown-menu" role="menu">
-								<li><a href="./books.html">도서등록</a></li>
+							<li><a href="/Lbooks/booksAdd">도서등록</a></li>
 							<li class="divider"></li>
-							<li><a href="./deletebooks.html">도서폐기</a></li>
+							<li><a href="/Lbooks/deletebooks">도서폐기</a></li>
 						</ul></li>
 				</ul>
 				<ul class="nav navbar-nav">
@@ -112,14 +112,13 @@ footer {
 							<span class="caret"></span>
 					</a>
 						<ul class="dropdown-menu" role="menu">
-						<li><a href="./bookrental.html">도서대여</a></li>
+							<li><a href="/Lbooks/bookrental">도서대여</a></li>
 							<li class="divider"></li>
-								<li><a href="./bookreturn.html">도서반납</a></li>
+								<li><a href="/Lbooks/bookreturn">도서반납</a></li>
 						</ul></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#"><span class="glyphicon glyphicon-log-in"></span>
-							로그인</a></li>
+					<li><a href="#"><span class="glyphicon glyphicon-log-in"></span>${ADMIN_ID}로그아웃</a></li>
 				</ul>
 			</div>
 		</div>
