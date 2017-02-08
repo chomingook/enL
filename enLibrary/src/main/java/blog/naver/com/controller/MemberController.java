@@ -27,23 +27,21 @@ public class MemberController {
 	@Autowired
 	private MemberService memberService;
 
-	//결제 폼
-	@RequestMapping(value="/admins/payment", method=RequestMethod.GET)
-		public String paymentInsert(){
-			return "/admins/payment";
-			
-		}
+	// 결제 폼
+	@RequestMapping(value = "/payment", method = RequestMethod.GET)
+	public String paymentInsert() {
+		return "/admins/payment";
 
-	//결제 등록 action
-	@RequestMapping(value="/admins/payments", method=RequestMethod.POST)
-	public String paymentInsert(Payment payment){
+	}
+
+	// 결제 등록 action
+	@RequestMapping(value = "/admins/payment", method = RequestMethod.POST)
+	public String paymentInsert(Payment payment) {
+		logger.info(payment.toString());
 		memberService.paymentInsert(payment);
 		return "/admins/payment";
 	}
-	
-	
-	
-	
+
 	// 대여 폼
 	@RequestMapping(value = "/Lbooks/bookrental", method = RequestMethod.GET)
 	public String rentalmember() {
@@ -56,7 +54,7 @@ public class MemberController {
 	public String rentalmember(Rental rental) {
 		memberService.bookrentalInsert(rental);
 		logger.info("rental :" + rental.toString());
-		return "redirect:/admins/payment";
+		return "redirect:/payment";
 
 	}
 
@@ -74,7 +72,7 @@ public class MemberController {
 
 		memberService.returnupdate(rental.getRetalCode());
 
-		return "/Lbooks/bookreturn";
+		return "redirect:/payment";
 	}
 
 	// 폐기 폼
@@ -221,6 +219,12 @@ public class MemberController {
 	public String libAdd(Lib lib) {
 		memberService.getLib(lib);
 		return "/member/libAdd";
+	}
+
+	// 로그인후 회원가입으로 가는 폼
+	@RequestMapping(value = "/member/memberLoginAdd", method = RequestMethod.GET)
+	public String memberLoginAdd() {
+		return "/member/memberLoginAdd";
 	}
 
 }

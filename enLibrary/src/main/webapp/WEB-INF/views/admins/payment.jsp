@@ -97,7 +97,7 @@ footer {
 						<ul class="dropdown-menu" role="menu">
 							<li><a href="/member/libAdd">지점등록</a></li>
 							<li class="divider"></li>
-							<li><a href="/member/memberAdd">회원가입신청</a></li>
+								<li><a href="/member/memberLoginAdd">회원가입신청</a></li>
 							<li class="divider"></li>
 							<li><a href="/member/management">회원관리</a></li>
 						</ul></li>
@@ -146,7 +146,7 @@ footer {
 					<!-- 렌탈 코드값을 가져와서 결제금액(회원과 일반) 결제 확인 -->
 					<div>
 					<label>랜탈코드 : </label> <input type="text" class="form-control"
-							name="#" style="width: 20%">
+							name="rentalcode" style="width: 20%">
 					</div>
 					<br>
 					<div>

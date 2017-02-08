@@ -90,7 +90,7 @@ footer {
 						<ul class="dropdown-menu" role="menu">
 							<li><a href="/member/libAdd">지점등록</a></li>
 							<li class="divider"></li>
-							<li><a href="/member/memberAdd">회원가입신청</a></li>
+								<li><a href="/member/memberLoginAdd">회원가입신청</a></li>
 							<li class="divider"></li>
 							<li><a href="/member/management">회원관리</a></li>
 						</ul></li>

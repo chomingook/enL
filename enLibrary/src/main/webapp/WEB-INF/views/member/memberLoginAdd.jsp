@@ -86,7 +86,7 @@ footer {
 					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-			<a class="navbar-brand" href="/indexlogin">Home</a>
+				<a class="navbar-brand" href="/indexlogin">Home</a>
 			</div>
 			<div class="navbar-collapse collapse" id="navbar-collapse-1">
 				<ul class="nav navbar-nav">
@@ -97,7 +97,7 @@ footer {
 						<ul class="dropdown-menu" role="menu">
 							<li><a href="/member/libAdd">지점등록</a></li>
 							<li class="divider"></li>
-								<li><a href="/member/memberLoginAdd">회원가입신청</a></li>
+							<li><a href="/member/memberLoginAdd">회원가입신청</a></li>
 							<li class="divider"></li>
 							<li><a href="/member/management">회원관리</a></li>
 						</ul></li>
@@ -138,27 +138,56 @@ footer {
 			<div class="container">
 				<br>
 				<br>
-				<h4 align="center">지점등록</h4>
+				<h4 align="center">회원가입신청</h4>
 				<br>
-				<form class="form-inline" action="<c:url value = '/member/libAdd'/>" method="post">
+				<form class="form-inline" action="<c:url value = '/member/memberAdd'/>" method="post">
+					
+					
+					<div class="form-group">
 					
 					<div>
-						<label>도서관명 : </label> <input type="text" class="form-control"
-							name="LIB_NAME" style="width: 20%">
-					</div>
-					<br>
-					<div>
-						<label>도서관위치 : </label> <input type="text" class="form-control"
-							name="LIB_LOCATION" style="width: 20%">
+						<label>도서관코드 : </label> <input type="text" class="form-control"
+							name="LIB_CODE" style="width: 20%">
 					</div>
 					<br>
 					
+						<label>아이디 : </label> <input type="text" class="form-control"
+							name="MEMBER_ID" >
+					</div>
+					<br>
 					<div>
-						<button type="submit" class="btn btn-default">등록하기</button>
+						<label>비밀번호 : </label> <input type="password" class="form-control"
+							name="MEMBER_PW" style="width: 20%">
+					</div>
+					<br>
+					<div>
+						<label>이름 : </label> <input type="text" class="form-control"
+							name="MEMBER_NAME" style="width: 20%">
+					</div>
+					<br>
+					<div>
+						<label>생년월일 : </label> <input type="text" class="form-control"
+							name="MEMBER_BIRTHDAY" style="width: 20%">
+					</div>
+					<br>
+					<div>
+						<label>전화번호 : </label> <input type="text" class="form-control"
+							name="MEMBER_PHONE" style="width: 20%">
+					</div>
+					<br>
+					<div>
+						<label>주소 : </label> <input type="text" class="form-control"
+							name="MEMBER_ADDR" style="width: 20%">
+					</div>
+					<br>
+				
+					<div>
+						<button type="submit" class="btn btn-default">가입신청</button>
 						<button type="reset" class="btn btn-default">초기화</button>
 					</div>
 				</form>
 			</div>
+
 
 			<footer class="container-fluid text-center">
 				<p>영어 도서관 관리시스템</p>

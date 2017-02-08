@@ -189,9 +189,9 @@
 	<!-- 관리자로그인세션 젤 마지막 -->
 	<select id="adminAdd" parameterType="String" resultType="blog.naver.com.dto.Admin">
 		SELECT
-			ADMINID,
-			ADMINPW,
-			LIBCODE
+			ADMINID AS ADMIN_ID,
+			ADMINPW AS ADMIN_PW,
+			LIBCODE AS LIB_CODE
 		FROM
 			admin
 		WHERE

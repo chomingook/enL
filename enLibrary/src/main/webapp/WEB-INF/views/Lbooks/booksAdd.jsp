@@ -172,7 +172,7 @@ footer {
 					<br>
 					
 					<div>
-						<label>최초대여일(수정중) : </label> <input type="date" class="form-control"
+						<label>최초대여일 : </label> <input type="date" class="form-control"
 							name="BOOK_FIRSTRENTALDAY" style="width: 20%">
 					</div>
 					<br>

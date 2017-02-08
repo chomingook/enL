@@ -43,13 +43,14 @@ public class MemberServiceImpl implements MemberService {
 	public Admin adminAdd(Admin admin) {
 		logger.info(admin.toString());
 		// 화면에서 입력하는 ID 와 PW
-		Admin MBadmin = new Admin();
+		Admin MBadmin = admin;
 		String ID = MBadmin.getADMIN_ID();
 		String PW = MBadmin.getADMIN_PW();
 
 		System.out.println("ID :" + ID + "PW : " + PW);
 
 		Admin DBadmin = memberDao.adminAdd(ID);
+		logger.info(DBadmin.toString());
 		String dbid = DBadmin.getADMIN_ID();
 		String dbpw = DBadmin.getADMIN_PW();
 		int libcode = DBadmin.getLIB_CODE();
@@ -66,6 +67,7 @@ public class MemberServiceImpl implements MemberService {
 		} else {
 			MBadmin.setResult(3); // 3 아이디불일치
 		}
+		logger.info(MBadmin.toString());
 		return MBadmin;
 	}
 
